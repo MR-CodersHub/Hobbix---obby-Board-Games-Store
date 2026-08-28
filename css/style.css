@@ -3518,26 +3518,28 @@ h5 { font-size: 0.9rem; font-weight: 600; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.55;
-  transition: transform var(--transition-slow), opacity var(--transition-normal);
+  opacity: 0.85;
+  filter: contrast(1.05) saturate(1.15);
+  transition: transform var(--transition-slow), opacity var(--transition-normal), filter var(--transition-normal);
   z-index: 1;
 }
 
 .category-visual-card:hover .category-bg-image {
-  transform: scale(1.12);
-  opacity: 0.7;
+  transform: scale(1.08);
+  opacity: 0.95;
+  filter: contrast(1.08) saturate(1.25);
 }
 
 .category-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11, 11, 26, 0.3) 0%, rgba(11, 11, 26, 0.75) 50%, rgba(7, 5, 18, 0.98) 100%);
+  background: linear-gradient(180deg, rgba(7, 5, 18, 0.15) 0%, rgba(7, 5, 18, 0.35) 45%, rgba(7, 5, 18, 0.9) 100%);
   z-index: 2;
   transition: background var(--transition-normal);
 }
 
 .category-visual-card:hover .category-card-overlay {
-  background: linear-gradient(180deg, rgba(11, 11, 26, 0.2) 0%, rgba(20, 14, 46, 0.65) 45%, rgba(11, 11, 26, 0.98) 100%);
+  background: linear-gradient(180deg, rgba(7, 5, 18, 0.08) 0%, rgba(20, 14, 46, 0.25) 45%, rgba(11, 11, 26, 0.92) 100%);
 }
 
 .category-top-badge {
@@ -3637,11 +3639,12 @@ h5 { font-size: 0.9rem; font-weight: 600; }
 }
 
 [data-theme="light"] .category-bg-image {
-  opacity: 0.75;
+  opacity: 0.9;
+  filter: contrast(1.05) saturate(1.1);
 }
 
 [data-theme="light"] .category-card-overlay {
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.6) 55%, rgba(15, 23, 42, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.35) 50%, rgba(15, 23, 42, 0.88) 100%);
 }
 
 [data-theme="light"] .category-top-badge {
