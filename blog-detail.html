@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top 10 Heavyweight Board Games of 2026 | Hobbix Tabletop Chronicle</title>
+  <meta name="description" content="An in-depth strategy breakdown and editorial review of the year's greatest Euro and thematic tabletop masterpieces at Hobbix.">
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <!-- Font Awesome 6.5.1 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== GLOBAL HEADER ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+        <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+        <span class="brand-text">HOBB<span>IX</span></span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home-2.html" class="nav-link">Home 2</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="recommendations.html" class="nav-link">Recommendations</a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Theme Toggle -->
+        <button class="header-action-btn theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <!-- RTL Toggle -->
+        <button class="header-action-btn rtl-toggle-btn" id="rtl-toggle-btn" onclick="toggleRTL()" title="Toggle RTL/LTR Direction" aria-label="Toggle RTL">
+          <i class="fa-solid fa-language"></i>
+        </button>
+        <button class="header-action-btn cart-btn-desktop" onclick="openCartDrawer()" title="Shopping Cart" aria-label="Shopping Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count">0</span>
+        </button>
+        <a href="products.html" class="btn btn-primary btn-sm header-cta-btn">
+          <i class="fa-solid fa-dice-d20"></i> Explore Vault
+        </a>
+        <button class="hamburger-btn" id="mobile-hamburger-btn" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+        <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+        <span class="brand-text">HOBB<span>IX</span></span>
+      </a>
+      <button class="drawer-close-btn" id="mobile-drawer-close" onclick="window.closeMobileMenu()" aria-label="Close Navigation Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="home-2.html" class="mobile-nav-link">Home 2 <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="products.html" class="mobile-nav-link">Products <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="recommendations.html" class="mobile-nav-link">Recommendations <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="blog.html" class="mobile-nav-link active">Blog <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact <i class="fa-solid fa-chevron-right"></i></a>
+    </nav>
+    <div class="mobile-drawer-footer" style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08);">
+      <button class="btn btn-secondary btn-block" onclick="window.closeMobileMenu(); openCartDrawer();" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; border-radius: var(--radius-md);">
+        <span style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;"><i class="fa-solid fa-cart-shopping text-gold"></i> View Vault Cart</span>
+        <span class="badge badge-gold"><span class="cart-count">0</span> Items</span>
+      </button>
+      <a href="products.html" class="btn btn-primary btn-block" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; font-weight: 700; border-radius: var(--radius-md);">
+        <i class="fa-solid fa-dice-d20"></i> Explore Vault
+      </a>
+      <div style="display: flex; gap: 0.65rem; margin-top: 0.25rem;">
+        <button class="btn btn-secondary btn-sm" onclick="toggleTheme()" style="flex: 1; padding: 0.5rem 0.65rem; font-size: 0.82rem;">
+          <i class="fa-solid fa-circle-half-stroke"></i> Theme
+        </button>
+        <button class="btn btn-secondary btn-sm" onclick="toggleRTL()" style="flex: 1; padding: 0.5rem 0.65rem; font-size: 0.82rem;">
+          <i class="fa-solid fa-language"></i> RTL / LTR
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay"></div>
+
+  <main>
+    <!-- ==================== 1. BLOG ARTICLE HERO & BREADCRUMB ==================== -->
+    <section class="section-sm page-hero-banner" id="blog-detail-hero">
+      <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb-trail" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          <a href="index.html" class="breadcrumb-link"><i class="fa-solid fa-house"></i> Home</a>
+          <span>/</span>
+          <a href="blog.html" class="breadcrumb-link">The Tabletop Chronicle</a>
+          <span>/</span>
+          <span class="breadcrumb-current text-gold">Heavyweight Masterpieces</span>
+        </div>
+
+        <div class="section-header" style="max-width: 860px; margin: 0 auto;">
+          <div style="display: flex; justify-content: center; gap: 0.75rem; align-items: center; margin-bottom: 0.85rem; flex-wrap: wrap;">
+            <span class="badge badge-gold"><i class="fa-solid fa-crown"></i> Cover Editorial</span>
+            <span class="badge badge-purple"><i class="fa-solid fa-chess"></i> Deep Strategy Analysis</span>
+            <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);"><i class="fa-regular fa-clock"></i> 7 Min Read</span>
+          </div>
+          <h1 class="section-title" style="font-size: clamp(1.8rem, 3.8vw, 2.75rem); line-height: 1.2; margin-bottom: 1rem;">
+            TOP 10 HEAVYWEIGHT BOARD GAMES OF 2026: THE <span class="gradient-text">STRATEGIC MASTERPIECES</span>
+          </h1>
+          <p class="section-subtitle" style="font-size: 1rem; color: var(--text-secondary); max-width: 720px; line-height: 1.65; margin: 0 auto 1.5rem;">
+            From Victorian industrial canals to Arrakis political duels, we dissect the pinnacle Euro engines, worker placement dynamics, and zero-luck economic juggernauts commanding our tables this year.
+          </p>
+
+          <!-- Author Mini Header -->
+          <div class="blog-author-header-chip" style="display: inline-flex; align-items: center; gap: 0.85rem; background: var(--bg-surface); padding: 0.4rem 1.25rem 0.4rem 0.5rem; border-radius: var(--radius-full); border: 1px solid var(--glass-border);">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Julian Thorne" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover;">
+            <span style="font-size: 0.88rem; color: var(--text-primary); font-weight: 600;">By Julian Thorne</span>
+            <span style="font-size: 0.8rem; color: var(--text-dim);">&bull; August 24, 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. MAIN ARTICLE BODY & STICKY SIDEBAR ==================== -->
+    <section class="section" id="blog-detail-main">
+      <div class="container blog-detail-layout-grid">
+        <!-- Main Article Content Column (Left) -->
+        <article class="blog-article-content">
+          <!-- Featured Lead Image -->
+          <div class="blog-lead-figure">
+            <img src="asstes/Dune Imperium – Uprising.jpg" alt="Dune Imperium Heavy Strategy Tabletop" class="blog-lead-img">
+            <figcaption class="blog-lead-caption">
+              <i class="fa-solid fa-camera text-gold"></i> Strategic worker-placement and deckbuilding in <em>Dune: Imperium – Uprising</em> at the Hobbix Seattle Flagship Lounge.
+            </figcaption>
+          </div>
+
+          <!-- Section 1: The Modern Heavy Game -->
+          <div class="blog-prose-block" id="prose-renaissance">
+            <h2>The Renaissance of Heavy Euro & Economic Engines</h2>
+            <p>
+              The modern board gaming landscape has evolved far beyond simple roll-and-move mechanics. Today’s heavyweight tabletop games are intricate clocks of interlocking decisions, unforgiving economic tension, and deeply rewarding multi-layered strategies. In 2026, designers have pushed the boundaries of worker placement, hand management, and spatial logistics to unprecedented heights.
+            </p>
+            <p>
+              What separates a true heavyweight title from a medium-weight game isn't merely rulebook density—it is the <strong>consequence of agency</strong>. Every meeple placed, resource burned, or card drafted alters the economic tempo of the table, rewarding players who plan three turns ahead while pivoting fluidly when rivals seize contested territories.
+            </p>
+
+            <!-- Pull Quote Box -->
+            <blockquote class="blog-pull-quote">
+              <div class="pull-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+              <p>
+                "In a true heavyweight masterpiece, victory isn't determined by lucky dice rolls—it is forged in tight supply chains, brutal timing, and outmaneuvering your rivals at the margins."
+              </p>
+              <cite>&mdash; Julian Thorne, Head Tabletop Curator</cite>
+            </blockquote>
+          </div>
+
+          <!-- Section 2: Deep Dive on Spotlight 1 -->
+          <div class="blog-prose-block" id="prose-brass-birmingham">
+            <h2>1. Brass: Birmingham Deluxe &mdash; The Flawless Industrial Web</h2>
+            <p>
+              Holding the undisputed #1 ranking on BoardGameGeek for good reason, Martin Wallace's industrial tour-de-force remains the gold standard of economic tension. Players construct cotton mills, coal mines, breweries, and iron foundries across the English Midlands during the Industrial Revolution, navigating canal and rail eras with surgical precision.
+            </p>
+
+            <!-- Game Spec Card -->
+            <div class="blog-game-spec-card">
+              <div class="game-spec-header">
+                <div class="game-spec-title-wrap">
+                  <span class="badge badge-gold">Top Pick #1</span>
+                  <h3>Brass: Birmingham Deluxe</h3>
+                </div>
+                <div class="game-spec-rating">
+                  <i class="fa-solid fa-star text-gold"></i>
+                  <strong>9.8</strong><span>/10</span>
+                </div>
+              </div>
+              <div class="game-spec-grid">
+                <div class="spec-item">
+                  <span class="spec-label">Weight / Complexity</span>
+                  <span class="spec-val text-gold"><i class="fa-solid fa-brain"></i> 4.4 / 5.0 (Heavy)</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Player Count</span>
+                  <span class="spec-val"><i class="fa-solid fa-users"></i> 2–4 Players (Best at 3-4)</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Play Time</span>
+                  <span class="spec-val"><i class="fa-regular fa-clock"></i> 120–180 Minutes</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Core Mechanics</span>
+                  <span class="spec-val"><i class="fa-solid fa-network-wired"></i> Network Building, Loans, Hand Mgmt</span>
+                </div>
+              </div>
+              <div class="game-spec-pros-cons">
+                <div class="spec-pros">
+                  <strong><i class="fa-solid fa-circle-check text-emerald"></i> Why We Love It:</strong>
+                  <ul>
+                    <li>Peerless interconnected economy—using opponent's beer and coal creates immense table interaction.</li>
+                    <li>Dual-era transition (Canal to Rail) completely shifts board geography at mid-game.</li>
+                    <li>Cast iron clay chips and linen-finish boards provide sublime tactile luxury.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Deep Dive on Spotlight 2 -->
+          <div class="blog-prose-block" id="prose-dune-uprising">
+            <h2>2. Dune: Imperium – Uprising &mdash; Political War on Arrakis</h2>
+            <p>
+              Paul Dennen’s standalone expansion elevates the deck-building and worker-placement hybrid into an electrifying tactical masterpiece. Introducing sandworms, spies, contract mechanics, and 6-player team modes, Uprising deepens combat stakes and political intrigue.
+            </p>
+            <p>
+              Unlike traditional multiplayer-solitaire Euro games, every round on Arrakis features tense combat phases where conflict cards award critical victory points, spice reserves, and faction influence tokens.
+            </p>
+
+            <!-- Secondary Image Grid -->
+            <div class="blog-inline-image-grid">
+              <div class="inline-img-box">
+                <img src="asstes/Arkham Horror The Living Card Game.jpg" alt="Arkham Horror Living Card Game" class="inline-img">
+                <span class="inline-img-tag">Campaign Narrative Depth</span>
+              </div>
+              <div class="inline-img-box">
+                <img src="asstes/Wingspan Master Collector's Edition.jpg" alt="Wingspan Collector Edition" class="inline-img">
+                <span class="inline-img-tag">Precision Engine Building</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: 5 Pro Tactics for Heavy Games -->
+          <div class="blog-prose-block" id="prose-tactics">
+            <h2>Masterclass: 4 Golden Rules for Mastering Heavy Tabletop Games</h2>
+            
+            <div class="blog-tactics-list">
+              <div class="tactic-card">
+                <span class="tactic-num">01</span>
+                <div>
+                  <h4>Track Tempo & Turn Economy</h4>
+                  <p>In engine-builders like <em>Arkham Horror</em> or <em>Dune</em>, actions are your rarest currency. Prioritize moves that generate compound action efficiency over one-off victory points early on.</p>
+                </div>
+              </div>
+
+              <div class="tactic-card">
+                <span class="tactic-num">02</span>
+                <div>
+                  <h4>Embrace Flexible Specialization</h4>
+                  <p>Never lock yourself into a single scoring pathway before Round 2. Observe what spaces your opponents neglect and capitalize on undervalued board resources.</p>
+                </div>
+              </div>
+
+              <div class="tactic-card">
+                <span class="tactic-num">03</span>
+                <div>
+                  <h4>Manage Table Heat & Threat Posture</h4>
+                  <p>Racing to a commanding lead in Round 1 paints a target on your back. Keep your scoring engines veiled and detonate big scoring combos in the penultimate round.</p>
+                </div>
+              </div>
+
+              <div class="tactic-card">
+                <span class="tactic-num">04</span>
+                <div>
+                  <h4>Sleeve & Organize for Fast Pacing</h4>
+                  <p>Heavy games flow 30% faster when tokens are sorted in magnetic trays and cards are sleeved with matte textures for lightning-fast shuffles.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Share Bar & Tags -->
+          <div class="blog-share-footer-bar">
+            <div class="blog-tag-cloud">
+              <span class="tag-pill"><i class="fa-solid fa-tag"></i> HeavyEuro</span>
+              <span class="tag-pill">BrassBirmingham</span>
+              <span class="tag-pill">DuneImperium</span>
+              <span class="tag-pill">Strategy2026</span>
+            </div>
+            <div class="blog-share-buttons">
+              <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted);">Share Article:</span>
+              <button class="share-btn" onclick="showToast('Link copied to clipboard!', 'success')" title="Copy Link"><i class="fa-solid fa-link"></i></button>
+              <button class="share-btn" onclick="showToast('Opening Twitter / X share...', 'info')" title="Share on X"><i class="fa-brands fa-x-twitter"></i></button>
+              <button class="share-btn" onclick="showToast('Opening Reddit share...', 'info')" title="Share on Reddit"><i class="fa-brands fa-reddit-alien"></i></button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Sticky Article Sidebar (Right) -->
+        <aside class="blog-sidebar">
+          <!-- Table of Contents Widget -->
+          <div class="sidebar-widget toc-widget">
+            <h4 class="widget-title"><i class="fa-solid fa-list-ul text-gold"></i> In This Article</h4>
+            <nav class="toc-links-list">
+              <a href="#prose-renaissance" class="toc-link active"><i class="fa-solid fa-chevron-right"></i> Heavy Euro Renaissance</a>
+              <a href="#prose-brass-birmingham" class="toc-link"><i class="fa-solid fa-chevron-right"></i> 1. Brass: Birmingham Deluxe</a>
+              <a href="#prose-dune-uprising" class="toc-link"><i class="fa-solid fa-chevron-right"></i> 2. Dune: Imperium – Uprising</a>
+              <a href="#prose-tactics" class="toc-link"><i class="fa-solid fa-chevron-right"></i> 4 Golden Masterclass Tactics</a>
+              <a href="#blog-discussion" class="toc-link"><i class="fa-solid fa-chevron-right"></i> Community Discussion</a>
+            </nav>
+          </div>
+
+          <!-- Featured Games in this Article -->
+          <div class="sidebar-widget featured-products-widget">
+            <h4 class="widget-title"><i class="fa-solid fa-cart-shopping text-gold"></i> Featured Games</h4>
+            
+            <div class="sidebar-product-card">
+              <img src="asstes/Dune Imperium – Uprising.jpg" alt="Dune Imperium" class="sidebar-prod-img">
+              <div class="sidebar-prod-info">
+                <h5>Dune: Imperium &ndash; Uprising</h5>
+                <span class="sidebar-prod-price">$59.99</span>
+                <button class="btn btn-primary btn-sm" onclick="AppState.addToCart('prod-1'); showToast('Added Dune Imperium to Cart!', 'success')">
+                  <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+
+            <div class="sidebar-product-card" style="margin-top: 1rem;">
+              <img src="asstes/Arkham Horror The Living Card Game.jpg" alt="Arkham Horror" class="sidebar-prod-img">
+              <div class="sidebar-prod-info">
+                <h5>Arkham Horror: Living Card Game</h5>
+                <span class="sidebar-prod-price">$69.99</span>
+                <button class="btn btn-primary btn-sm" onclick="AppState.addToCart('prod-2'); showToast('Added Arkham Horror to Cart!', 'success')">
+                  <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Curator's Note Banner -->
+          <div class="sidebar-widget curator-callout-widget">
+            <div style="font-size: 1.8rem; color: var(--accent-gold); margin-bottom: 0.5rem;">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.35rem;">Need a Rules Consultation?</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+              Our Game Master concierge matches your gaming group to the exact right mechanics.
+            </p>
+            <a href="recommendations.html" class="btn btn-secondary btn-sm btn-block">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Launch Matchmaker
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==================== 3. AUTHOR SPOTLIGHT ==================== -->
+    <section class="section" id="blog-author-spotlight" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="blog-author-full-card">
+          <div class="author-avatar-col">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80" alt="Julian Thorne" class="author-avatar-large">
+            <span class="badge badge-gold" style="margin-top: 0.75rem;"><i class="fa-solid fa-crown"></i> Senior Curator</span>
+          </div>
+          <div class="author-bio-col">
+            <div class="author-meta-header">
+              <div>
+                <h3 class="author-full-name">Julian Thorne</h3>
+                <span class="author-title-tag">Heavy Euro & Economic Engine Specialist &bull; 400+ Logged Plays</span>
+              </div>
+              <div class="author-social-links">
+                <a href="https://twitter.com" class="author-social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://boardgamegeek.com" class="author-social-btn" aria-label="BGG"><i class="fa-solid fa-dice"></i></a>
+                <a href="contact.html" class="author-social-btn" aria-label="Message"><i class="fa-solid fa-envelope"></i></a>
+              </div>
+            </div>
+            <p class="author-bio-text">
+              Julian has managed tournament ladders and curated heavy Euro board game acquisitions for Hobbix since 2019. When he isn't crunching supply chain graphs in <em>Brass: Birmingham</em> or building Martian terraforming colonies, he hosts Friday Demo Nights at our Seattle Flagship lounge.
+            </p>
+            <div class="author-favorite-strip">
+              <span>Julian's Desert Island Games:</span>
+              <strong>Brass: Birmingham &bull; Dune: Imperium &bull; Terraforming Mars &bull; Arkham Horror LCG</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. COMMUNITY DISCUSSION & COMMENTS ==================== -->
+    <section class="section" id="blog-discussion">
+      <div class="container" style="max-width: 960px;">
+        <div class="section-header text-left">
+          <span class="section-tag"><i class="fa-solid fa-comments"></i> Tabletop Roundtable</span>
+          <h2 class="section-title">Community <span class="text-gold">Discussion</span> (3)</h2>
+          <p class="section-subtitle">Share your tactical insights, debate player counts, or ask rules questions.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <!-- Comments Feed -->
+        <div class="comments-thread-list">
+          <!-- Comment 1 -->
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-author-info">
+                <div class="comment-avatar"><i class="fa-solid fa-user-ninja"></i></div>
+                <div>
+                  <h4 class="comment-author-name">David K. <span class="badge badge-purple" style="font-size: 0.65rem;">Verified Buyer</span></h4>
+                  <span class="comment-date">August 25, 2026 &bull; 3:14 PM</span>
+                </div>
+              </div>
+              <div class="comment-rating-stars">
+                <i class="fa-solid fa-star text-gold"></i>
+                <i class="fa-solid fa-star text-gold"></i>
+                <i class="fa-solid fa-star text-gold"></i>
+                <i class="fa-solid fa-star text-gold"></i>
+                <i class="fa-solid fa-star text-gold"></i>
+              </div>
+            </div>
+            <p class="comment-text">
+              Completely agree with the #1 spot for Brass: Birmingham. The beer economy completely fixes the runaway leader problem that older economic games had. My group played 4 matches last weekend and every single game came down to a 3-point margin!
+            </p>
+            <div class="comment-actions-bar">
+              <button class="comment-action-btn" onclick="showToast('Thanks for your upvote!', 'success')"><i class="fa-solid fa-thumbs-up"></i> Helpful (18)</button>
+              <button class="comment-action-btn" onclick="showToast('Reply thread opened.', 'info')"><i class="fa-solid fa-reply"></i> Reply</button>
+            </div>
+          </div>
+
+          <!-- Comment 2: GM Reply -->
+          <div class="comment-card comment-reply">
+            <div class="comment-header">
+              <div class="comment-author-info">
+                <div class="comment-avatar gm-avatar"><i class="fa-solid fa-dice-d20"></i></div>
+                <div>
+                  <h4 class="comment-author-name">Julian Thorne <span class="badge badge-gold" style="font-size: 0.65rem;">Staff Curator</span></h4>
+                  <span class="comment-date">August 25, 2026 &bull; 4:20 PM</span>
+                </div>
+              </div>
+            </div>
+            <p class="comment-text">
+              Spot on, David! That beer scarcity in the Rail Era forces players to build mutual infrastructure or pay heavy iron costs. Next time you play, try an early pottery play in Uttoxeter—it catches opponents off guard every time.
+            </p>
+          </div>
+
+          <!-- Comment 3 -->
+          <div class="comment-card">
+            <div class="comment-header">
+              <div class="comment-author-info">
+                <div class="comment-avatar"><i class="fa-solid fa-hat-wizard"></i></div>
+                <div>
+                  <h4 class="comment-author-name">Sarah Chen <span class="badge badge-purple" style="font-size: 0.65rem;">Lounge Member</span></h4>
+                  <span class="comment-date">August 26, 2026 &bull; 11:05 AM</span>
+                </div>
+              </div>
+              <div class="comment-rating-stars">
+                <i class="fa-solid fa-star text-gold"></i>
+                <i class="fa-solid fa-star text-gold"></i>
+                <i class="fa-solid fa-star text-gold"></i>
+                <i class="fa-solid fa-star text-gold"></i>
+                <i class="fa-solid fa-star-half-stroke text-gold"></i>
+              </div>
+            </div>
+            <p class="comment-text">
+              Dune: Imperium Uprising was the best board game purchase I made this year. The 6-player Commander mode is chaotic in the best way possible. Fast shipping to Portland with corner protectors too!
+            </p>
+            <div class="comment-actions-bar">
+              <button class="comment-action-btn" onclick="showToast('Thanks for your upvote!', 'success')"><i class="fa-solid fa-thumbs-up"></i> Helpful (12)</button>
+              <button class="comment-action-btn" onclick="showToast('Reply thread opened.', 'info')"><i class="fa-solid fa-reply"></i> Reply</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add a Comment Form -->
+        <div class="comment-form-container">
+          <h3 style="font-size: 1.3rem; margin-bottom: 0.4rem; color: var(--text-primary);"><i class="fa-solid fa-pen-nib text-gold"></i> Leave Your Commentary</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem;">Your review will appear with your verified buyer or lounge badge.</p>
+          
+          <form onsubmit="event.preventDefault(); showToast('Thank you! Your comment has been submitted to the chronicle.', 'success'); this.reset();" class="comment-form-grid">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label for="comment-name" style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.35rem; display: block;">Adventurer Name *</label>
+                <input type="text" id="comment-name" class="form-input" placeholder="e.g. Commander Marcus" required style="width: 100%; background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 0.75rem 1rem; color: var(--text-primary);">
+              </div>
+              <div class="form-group">
+                <label for="comment-email" style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.35rem; display: block;">Email Address (Kept Private) *</label>
+                <input type="email" id="comment-email" class="form-input" placeholder="e.g. marcus@tabletop.com" required style="width: 100%; background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 0.75rem 1rem; color: var(--text-primary);">
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 1rem;">
+              <label for="comment-msg" style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.35rem; display: block;">Your Tactical Insight or Question *</label>
+              <textarea id="comment-msg" rows="4" class="form-input" placeholder="Write your thoughts on heavy euro strategy or rules questions..." required style="width: 100%; background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: var(--radius-md); padding: 0.75rem 1rem; color: var(--text-primary); resize: vertical;"></textarea>
+            </div>
+            <div style="margin-top: 1.25rem;">
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-paper-plane"></i> Publish Commentary
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. RELATED ARTICLES ==================== -->
+    <section class="section" id="blog-related-articles" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-scroll"></i> Keep Reading</span>
+          <h2 class="section-title">Related <span class="text-gold">Chronicles</span></h2>
+          <p class="section-subtitle">Deepen your tabletop mastery with more guides from our senior game masters.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="articles-grid">
+          <!-- Related 1 -->
+          <div class="article-card">
+            <div class="article-img-wrap">
+              <img src="asstes/Dungeons & Dragons 2024 Player's Handbook.jpg" alt="D&D 2024 DM Secrets">
+            </div>
+            <div class="article-content">
+              <div class="article-meta-row">
+                <span class="badge badge-purple">RPG & Lore</span>
+                <span><i class="fa-regular fa-clock"></i> 8 Min Read</span>
+              </div>
+              <h3 class="article-title">DM MASTERCLASS: CRAFTING UNFORGETTABLE ENCOUNTERS</h3>
+              <p class="article-excerpt">Secrets to building atmospheric tension, cinematic monster maneuvers, and deep emotional player stakes in 5E.</p>
+              <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem;">
+                <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fa-regular fa-user"></i> Elena Rostova</span>
+                <a href="blog.html" class="text-gold font-heading" style="font-weight: 700; font-size: 0.95rem;">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Related 2 -->
+          <div class="article-card">
+            <div class="article-img-wrap">
+              <img src="asstes/Mythic Prismatic Metal Polyhedral Dice Set.jpg" alt="Miniature Painting Guide">
+            </div>
+            <div class="article-content">
+              <div class="article-meta-row">
+                <span class="badge badge-purple">Hobby Craft</span>
+                <span><i class="fa-regular fa-clock"></i> 5 Min Read</span>
+              </div>
+              <h3 class="article-title">BEGINNER'S GUIDE TO MINIS PAINTING & DICE CARE</h3>
+              <p class="article-excerpt">Essential washes, wet pallette mastery, and edge highlighting techniques for tabletop miniature hobbyists.</p>
+              <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem;">
+                <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fa-regular fa-user"></i> Darius Cole</span>
+                <a href="blog.html" class="text-gold font-heading" style="font-weight: 700; font-size: 0.95rem;">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Related 3 -->
+          <div class="article-card">
+            <div class="article-img-wrap">
+              <img src="asstes/Cascadia Pacific Northwest Wonders.jpg" alt="Cozy Gateway Games">
+            </div>
+            <div class="article-content">
+              <div class="article-meta-row">
+                <span class="badge badge-purple">Family Games</span>
+                <span><i class="fa-regular fa-clock"></i> 6 Min Read</span>
+              </div>
+              <h3 class="article-title">THE TOP 5 GATEWAY BOARD GAMES FOR FAMILY GAME NIGHT</h3>
+              <p class="article-excerpt">How to introduce non-gamers to modern board games with Cascadia, Wingspan, and Ticket to Ride.</p>
+              <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1rem;">
+                <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fa-regular fa-user"></i> Dr. Maya Lin</span>
+                <a href="blog.html" class="text-gold font-heading" style="font-weight: 700; font-size: 0.95rem;">Read Guide <i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. NEWSLETTER & COMPLETE FOOTER ==================== -->
+    <section class="newsletter-section section-sm" id="blog-detail-newsletter">
+      <div class="container">
+        <div class="newsletter-box">
+          <div class="newsletter-content">
+            <span class="section-tag"><i class="fa-solid fa-envelope"></i> The Tabletop Dispatch</span>
+            <h2 style="font-size: clamp(1.6rem, 3.2vw, 2.3rem); margin-bottom: 0.6rem; text-transform: uppercase;">GET WEEKLY <span class="gradient-text">STRATEGY GUIDES</span></h2>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+              Subscribe to the Dice & Chronicle digest. Receive exclusive Euro-game strategy guides, new release alerts, and tournament schedules directly to your inbox.
+            </p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed to the Tabletop Chronicle!', 'success'); this.reset();">
+              <input type="email" class="newsletter-input" placeholder="Enter your adventurer email..." required>
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-paper-plane"></i> Subscribe Digest
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Complete Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+            <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+            <span class="brand-text">HOBB<span>IX</span></span>
+          </a>
+          <p>
+            Your ultimate destination for curated board games, tabletop RPGs, custom polyhedral dice, and unforgettable community game nights.
+          </p>
+          <div class="footer-social-links">
+            <a href="https://instagram.com" class="footer-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://discord.com" class="footer-social-btn" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://youtube.com" class="footer-social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://x.com" class="footer-social-btn" aria-label="X Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Explore Store</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="home-2.html">Home 2 (Alt Showcase)</a></li>
+            <li><a href="about.html">About Our Lounge</a></li>
+            <li><a href="products.html">Product Catalog</a></li>
+            <li><a href="recommendations.html">Game Matchmaker</a></li>
+            <li><a href="blog.html">Tabletop Chronicle</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Game Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="products.html?category=strategy">Heavy Strategy Games</a></li>
+            <li><a href="products.html?category=card">Living Card Games</a></li>
+            <li><a href="products.html?category=family">Family & Party Games</a></li>
+            <li><a href="products.html?category=rpg">D&D and RPG Tomes</a></li>
+            <li><a href="products.html?category=accessories">Precision Metal Dice</a></li>
+            <li><a href="products.html">Collector Bundles</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Vault Lounge</h4>
+          <ul class="footer-contact-info">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>404 Dragon Run Boulevard, Suite 12, Seattle, WA 98101</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon–Sun: 11:00 AM &ndash; 11:00 PM (Game Nights till Midnight)</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+1 (206) 555-VAULT (8285)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 HOBBIX Board Game & Hobby Store. All Rights Reserved. Crafted for tabletop gamers.</p>
+        <div class="footer-payment-badges">
+          <i class="fa-brands fa-cc-visa" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+          <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+          <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Global Drawers & Modals -->
+  <div class="side-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3><i class="fa-solid fa-cart-shopping text-gold"></i> Your Vault Cart (<span class="cart-count">0</span>)</h3>
+      <button class="drawer-close-btn" onclick="closeCartDrawer()" aria-label="Close Cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-free-shipping">
+      <div id="free-shipping-status">Add <strong>$75.00</strong> more for Free Delivery</div>
+      <div class="shipping-progress-bar"><div class="shipping-progress-fill" id="shipping-progress-fill"></div></div>
+    </div>
+    <div class="cart-body" id="cart-items-list"></div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span><span id="cart-subtotal-amount" class="font-mono">$0.00</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>Estimated Shipping</span><span style="color: var(--accent-emerald);">Calculated at Checkout</span>
+      </div>
+      <div class="cart-summary-row total">
+        <span>Total</span><span id="cart-total-amount">$0.00</span>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-primary" onclick="handlePlaceOrder()"><i class="fa-solid fa-bag-shopping"></i> Place Order</button>
+        <button class="btn btn-secondary btn-sm" onclick="closeCartDrawer()">Continue Browsing</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="search-modal">
+    <div class="modal-content search-modal-box">
+      <button class="modal-close-btn" onclick="closeSearchModal()" aria-label="Close Search"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body">
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" class="search-input" id="global-search-input" placeholder="Search 1,500+ board games, expansions, dice, RPGs...">
+        </div>
+        <div class="search-results-list" id="search-results-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="quickview-modal">
+    <div class="modal-content" style="max-width: 780px;">
+      <button class="modal-close-btn" onclick="closeQuickView()" aria-label="Close Quick View"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body" id="quickview-modal-body"></div>
+    </div>
+  </div>
+
+  <div class="mobile-drawer-overlay" id="modal-overlay-backdrop" onclick="closeCartDrawer()"></div>
+  <div class="toast-container" id="toast-container"></div>
+  <button class="back-to-top" id="back-to-top-btn" aria-label="Scroll to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobbix | Tabletop & Board Game Catalog</title>
+  <meta name="description" content="Browse our vault of 1,500+ curated board games, expansions, card games, tabletop RPGs, and hobby dice accessories at Hobbix.">
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <!-- Font Awesome 6.5.1 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== GLOBAL HEADER ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+        <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+        <span class="brand-text">HOBB<span>IX</span></span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home-2.html" class="nav-link">Home 2</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="products.html" class="nav-link active">Products</a>
+        <a href="recommendations.html" class="nav-link">Recommendations</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Theme Toggle -->
+        <button class="header-action-btn theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <!-- RTL Toggle -->
+        <button class="header-action-btn rtl-toggle-btn" id="rtl-toggle-btn" onclick="toggleRTL()" title="Toggle RTL/LTR Direction" aria-label="Toggle RTL">
+          <i class="fa-solid fa-language"></i>
+        </button>
+        <button class="header-action-btn cart-btn-desktop" onclick="openCartDrawer()" title="Shopping Cart" aria-label="Shopping Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count">0</span>
+        </button>
+        <a href="products.html" class="btn btn-primary btn-sm header-cta-btn">
+          <i class="fa-solid fa-dice-d20"></i> Explore Vault
+        </a>
+        <button class="hamburger-btn" id="mobile-hamburger-btn" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+        <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+        <span class="brand-text">HOBB<span>IX</span></span>
+      </a>
+      <button class="drawer-close-btn" id="mobile-drawer-close" onclick="window.closeMobileMenu()" aria-label="Close Navigation Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="home-2.html" class="mobile-nav-link">Home 2 <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="products.html" class="mobile-nav-link active">Products <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="recommendations.html" class="mobile-nav-link">Recommendations <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="blog.html" class="mobile-nav-link">Blog <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact <i class="fa-solid fa-chevron-right"></i></a>
+    </nav>
+    <div class="mobile-drawer-footer" style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08);">
+      <button class="btn btn-secondary btn-block" onclick="window.closeMobileMenu(); openCartDrawer();" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; border-radius: var(--radius-md);">
+        <span style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;"><i class="fa-solid fa-cart-shopping text-gold"></i> View Vault Cart</span>
+        <span class="badge badge-gold"><span class="cart-count">0</span> Items</span>
+      </button>
+      <a href="products.html" class="btn btn-primary btn-block" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; font-weight: 700; border-radius: var(--radius-md);">
+        <i class="fa-solid fa-dice-d20"></i> Explore Vault
+      </a>
+      <div style="display: flex; gap: 0.65rem; margin-top: 0.25rem;">
+        <button class="btn btn-secondary btn-sm" onclick="toggleTheme()" style="flex: 1; padding: 0.5rem 0.65rem; font-size: 0.82rem;">
+          <i class="fa-solid fa-circle-half-stroke"></i> Theme
+        </button>
+        <button class="btn btn-secondary btn-sm" onclick="toggleRTL()" style="flex: 1; padding: 0.5rem 0.65rem; font-size: 0.82rem;">
+          <i class="fa-solid fa-language"></i> RTL / LTR
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay"></div>
+
+  <main>
+    <!-- ==================== 1. PRODUCTS HERO BANNER ==================== -->
+    <section class="section-sm page-hero-banner" id="products-hero">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-cubes"></i> Vault Catalog</span>
+          <h1 class="section-title">EXPLORE OUR <span class="gradient-text">TABLETOP COLLECTION</span></h1>
+          <p class="section-subtitle">
+            1,500+ carefully curated strategy games, living card games, cozy family classics, and premium accessories.
+          </p>
+          <div class="title-divider"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. CATEGORY NAVIGATION PILLS ==================== -->
+    <section class="section-sm" id="category-navigation-strip" style="background: var(--bg-surface); padding: 1.25rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+      <div class="container">
+        <div class="tabs-nav" style="margin-bottom: 0; justify-content: center; flex-wrap: wrap;">
+          <button class="tab-btn cat-pill-btn active" data-category="all">
+            <i class="fa-solid fa-border-all"></i> All Games (15)
+          </button>
+          <button class="tab-btn cat-pill-btn" data-category="strategy">
+            <i class="fa-solid fa-chess-knight"></i> Strategy
+          </button>
+          <button class="tab-btn cat-pill-btn" data-category="card">
+            <i class="fa-solid fa-clone"></i> Card Games
+          </button>
+          <button class="tab-btn cat-pill-btn" data-category="family">
+            <i class="fa-solid fa-people-roof"></i> Family
+          </button>
+          <button class="tab-btn cat-pill-btn" data-category="puzzle">
+            <i class="fa-solid fa-puzzle-piece"></i> Puzzle
+          </button>
+          <button class="tab-btn cat-pill-btn" data-category="rpg">
+            <i class="fa-solid fa-dragon"></i> RPG & D&D
+          </button>
+          <button class="tab-btn cat-pill-btn" data-category="accessories">
+            <i class="fa-solid fa-dice-d6"></i> Accessories
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. FUNCTIONAL FILTERS & PRODUCT LISTING GRID ==================== -->
+    <section class="section" id="products-catalog-main">
+      <div class="container products-layout-wrapper">
+        <!-- Filter Sidebar -->
+        <aside class="filter-sidebar" id="filter-sidebar">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.75rem;">
+            <h3 style="font-size: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fa-solid fa-filter text-gold"></i> Filters
+            </h3>
+            <button class="text-gold font-mono" id="clear-filters-sidebar-btn" style="font-size: 0.8rem; text-decoration: underline;">
+              Reset All
+            </button>
+          </div>
+
+          <!-- Max Price Slider -->
+          <div class="filter-group">
+            <div class="filter-group-title">Max Price (<span id="price-range-value" class="text-gold font-mono">$200</span>)</div>
+            <div class="price-slider-row">
+              <input type="range" class="price-range-input" id="price-range-slider" min="10" max="200" step="5" value="200">
+              <div class="price-display-tags">
+                <span>$10</span>
+                <span>$200+</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player Count Checkboxes -->
+          <div class="filter-group">
+            <div class="filter-group-title">Player Count</div>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-player-checkbox" value="1-2">
+              <span>1-2 Players (Solo / Duels)</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-player-checkbox" value="3-4">
+              <span>3-4 Players (Standard)</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-player-checkbox" value="5+">
+              <span>5+ Players (Large Groups)</span>
+            </label>
+          </div>
+
+          <!-- Age Recommendation -->
+          <div class="filter-group">
+            <div class="filter-group-title">Age Group</div>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-age-checkbox" value="8">
+              <span>Ages 8+ (Kids & Family)</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-age-checkbox" value="10">
+              <span>Ages 10+ (Pre-Teen)</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-age-checkbox" value="14">
+              <span>Ages 14+ (Teens & Adults)</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-age-checkbox" value="16">
+              <span>Ages 16+ (Heavy Strategy)</span>
+            </label>
+          </div>
+
+          <!-- Difficulty -->
+          <div class="filter-group">
+            <div class="filter-group-title">Complexity / Weight</div>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-diff-checkbox" value="Beginner">
+              <span>Beginner / Gateway</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-diff-checkbox" value="Medium">
+              <span>Medium / Mid-Weight</span>
+            </label>
+            <label class="filter-checkbox-label">
+              <input type="checkbox" class="filter-diff-checkbox" value="Expert">
+              <span>Expert / Heavy Strategy</span>
+            </label>
+          </div>
+
+          <!-- In Stock Only -->
+          <div class="filter-group">
+            <label class="filter-checkbox-label" style="margin-bottom: 0;">
+              <input type="checkbox" id="filter-in-stock">
+              <span style="font-weight: 600; color: var(--accent-emerald);">In Stock Only</span>
+            </label>
+          </div>
+        </aside>
+
+        <!-- Product Grid Area -->
+        <div>
+          <!-- Toolbar -->
+          <div class="products-toolbar">
+            <span id="products-count-label" class="font-mono text-muted" style="font-size: 0.9rem;">
+              Showing 16 of 16 Tabletop Games
+            </span>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <label for="products-sort-select" class="font-heading" style="font-size: 0.95rem; font-weight: 700; color: var(--text-secondary);">Sort By:</label>
+              <select id="products-sort-select" class="sort-select">
+                <option value="featured">Featured & Staff Picks</option>
+                <option value="rating">Highest Rated</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="newest">Newest Releases</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Grid Container -->
+          <div class="products-grid" id="products-listing-grid">
+            <!-- Rendered dynamically by js/pages.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. TABLETOP BUYER'S & DISCIPLINE GUIDE ==================== -->
+    <section class="section" id="tabletop-buyers-guide" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-graduation-cap"></i> Curator's Guide</span>
+          <h2 class="section-title">How to Choose <span class="text-gold">Your Next Game</span></h2>
+          <p class="section-subtitle">A quick breakdown of tabletop game weights and playstyles to help you find the perfect match for your game night.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="buyers-guide-grid">
+          <!-- Guide 1 -->
+          <div class="guide-card">
+            <div>
+              <div class="guide-header-icon"><i class="fa-solid fa-people-roof"></i></div>
+              <span class="guide-tag">Weight 1.5 · Gateway</span>
+              <h3 class="guide-title">Family & Engine Builders</h3>
+              <p class="guide-desc">Quick to learn in 5 minutes with low direct conflict. Ideal for dinner parties, holidays, and multi-generational game nights.</p>
+              <div class="guide-meta-list">
+                <span><i class="fa-solid fa-clock text-gold"></i> Duration: <strong>30-60 Min</strong></span>
+                <span><i class="fa-solid fa-users text-gold"></i> Group: <strong>2-5 Players</strong></span>
+                <span><i class="fa-solid fa-star text-gold"></i> Top Pick: <strong>Wingspan / Cascadia</strong></span>
+              </div>
+            </div>
+            <a href="#products-catalog-main" class="btn btn-secondary btn-sm" onclick="filterByCategory('family')">
+              <i class="fa-solid fa-arrow-right"></i> View Family Games
+            </a>
+          </div>
+
+          <!-- Guide 2 -->
+          <div class="guide-card">
+            <div>
+              <div class="guide-header-icon" style="color: var(--accent-gold); border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.12);"><i class="fa-solid fa-chess-rook"></i></div>
+              <span class="guide-tag">Weight 3.5 · Mid/Heavy</span>
+              <h3 class="guide-title">Euro Strategy & Trading</h3>
+              <p class="guide-desc">Complex resource conversion, worker placement, and spatial logistics. Zero luck, high satisfaction for master tacticians.</p>
+              <div class="guide-meta-list">
+                <span><i class="fa-solid fa-clock text-gold"></i> Duration: <strong>60-120 Min</strong></span>
+                <span><i class="fa-solid fa-users text-gold"></i> Group: <strong>2-4 Players</strong></span>
+                <span><i class="fa-solid fa-star text-gold"></i> Top Pick: <strong>Brass: Birmingham</strong></span>
+              </div>
+            </div>
+            <a href="#products-catalog-main" class="btn btn-secondary btn-sm" onclick="filterByCategory('strategy')">
+              <i class="fa-solid fa-arrow-right"></i> View Euro Strategy
+            </a>
+          </div>
+
+          <!-- Guide 3 -->
+          <div class="guide-card">
+            <div>
+              <div class="guide-header-icon" style="color: var(--accent-cyan); border-color: rgba(6,182,212,0.35); background: rgba(6,182,212,0.12);"><i class="fa-solid fa-dragon"></i></div>
+              <span class="guide-tag">Weight 4.0 · Campaign</span>
+              <h3 class="guide-title">Co-Op Campaign Crawlers</h3>
+              <p class="guide-desc">Team up to defeat the game system. Persistent story progression, character levelling, and 50+ hours of tactical dungeon combat.</p>
+              <div class="guide-meta-list">
+                <span><i class="fa-solid fa-clock text-gold"></i> Duration: <strong>90-180 Min</strong></span>
+                <span><i class="fa-solid fa-users text-gold"></i> Group: <strong>1-4 Players</strong></span>
+                <span><i class="fa-solid fa-star text-gold"></i> Top Pick: <strong>Frosthaven Campaign</strong></span>
+              </div>
+            </div>
+            <a href="#products-catalog-main" class="btn btn-secondary btn-sm" onclick="filterByCategory('rpg')">
+              <i class="fa-solid fa-arrow-right"></i> View RPG & Campaigns
+            </a>
+          </div>
+
+          <!-- Guide 4 -->
+          <div class="guide-card">
+            <div>
+              <div class="guide-header-icon" style="color: var(--accent-orange); border-color: rgba(255,107,0,0.35); background: rgba(255,107,0,0.12);"><i class="fa-solid fa-clone"></i></div>
+              <span class="guide-tag">Weight 2.8 · Synergy</span>
+              <h3 class="guide-title">Living Card Synergy & Duels</h3>
+              <p class="guide-desc">Customizable deck-building with deep tactical counters, psychological bluffing, and endless expansion compatibility.</p>
+              <div class="guide-meta-list">
+                <span><i class="fa-solid fa-clock text-gold"></i> Duration: <strong>45-90 Min</strong></span>
+                <span><i class="fa-solid fa-users text-gold"></i> Group: <strong>1-2 Players</strong></span>
+                <span><i class="fa-solid fa-star text-gold"></i> Top Pick: <strong>Dune: Imperium</strong></span>
+              </div>
+            </div>
+            <a href="#products-catalog-main" class="btn btn-secondary btn-sm" onclick="filterByCategory('card')">
+              <i class="fa-solid fa-arrow-right"></i> View Card Games
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. UPCOMING PRE-ORDERS & CROWDFUNDING SPOTLIGHTS ==================== -->
+    <section class="section" id="pre-orders-spotlight">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-rocket"></i> Early Access</span>
+          <h2 class="section-title">Upcoming <span class="text-gold">Pre-Orders</span></h2>
+          <p class="section-subtitle">Reserve highly anticipated 2026 tabletop releases and secure exclusive promo meeples and first-run collector discounts.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="preorders-grid">
+          <!-- Preorder 1 -->
+          <div class="preorder-card">
+            <div class="preorder-img-wrap">
+              <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=800&q=80" alt="Nemesis Retaliation" class="preorder-img">
+              <span class="preorder-countdown-badge"><i class="fa-solid fa-clock"></i> Arriving in 14 Days</span>
+            </div>
+            <div class="preorder-body">
+              <h3 class="preorder-title">Nemesis: Retaliation</h3>
+              <span class="preorder-publisher">Awaken Realms · Sci-Fi Survival Horror</span>
+              <div class="preorder-perk">
+                <i class="fa-solid fa-gift"></i> Includes 4 Exclusive Acrylic Monster Standees
+              </div>
+              <div class="preorder-footer">
+                <div>
+                  <div class="preorder-price">$129.99</div>
+                  <div style="font-size:0.75rem; color:var(--text-dim); text-decoration:line-through;">$149.99 MSRP</div>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="showToast('Nemesis: Retaliation Pre-Order Locked In!', 'success')">
+                  <i class="fa-solid fa-lock"></i> Pre-Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preorder 2 -->
+          <div class="preorder-card">
+            <div class="preorder-img-wrap">
+              <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80" alt="Root Homeland" class="preorder-img">
+              <span class="preorder-countdown-badge"><i class="fa-solid fa-clock"></i> Arriving in 26 Days</span>
+            </div>
+            <div class="preorder-body">
+              <h3 class="preorder-title">Root: The Homeland Expansion</h3>
+              <span class="preorder-publisher">Leder Games · Asymmetric Woodland Might</span>
+              <div class="preorder-perk">
+                <i class="fa-solid fa-gift"></i> Free Screen-Printed Wooden Clearing Markers
+              </div>
+              <div class="preorder-footer">
+                <div>
+                  <div class="preorder-price">$44.99</div>
+                  <div style="font-size:0.75rem; color:var(--text-dim); text-decoration:line-through;">$50.00 MSRP</div>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="showToast('Root Expansion Pre-Order Locked In!', 'success')">
+                  <i class="fa-solid fa-lock"></i> Pre-Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preorder 3 -->
+          <div class="preorder-card">
+            <div class="preorder-img-wrap">
+              <img src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=800&q=80" alt="Slay the Spire" class="preorder-img">
+              <span class="preorder-countdown-badge"><i class="fa-solid fa-clock"></i> Arriving Next Month</span>
+            </div>
+            <div class="preorder-body">
+              <h3 class="preorder-title">Slay the Spire: The Board Game</h3>
+              <span class="preorder-publisher">Contention Games · Co-Op Roguelike</span>
+              <div class="preorder-perk">
+                <i class="fa-solid fa-gift"></i> Includes Custom Neoprene Boss Mat + Metal Relic Coin
+              </div>
+              <div class="preorder-footer">
+                <div>
+                  <div class="preorder-price">$99.99</div>
+                  <div style="font-size:0.75rem; color:var(--text-dim); text-decoration:line-through;">$115.00 MSRP</div>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="showToast('Slay The Spire Pre-Order Locked In!', 'success')">
+                  <i class="fa-solid fa-lock"></i> Pre-Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. CURATED VAULT BUNDLES & STARTER SETS ==================== -->
+    <section class="section" id="vault-bundles-section" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-box-open"></i> Maximum Value</span>
+          <h2 class="section-title">Curated <span class="text-gold">Tabletop Bundles</span></h2>
+          <p class="section-subtitle">Get the game, premium card sleeves, organizer inserts, and expansion packs bundled together with up to 25% instant savings.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="bundles-grid">
+          <!-- Bundle 1 -->
+          <div class="bundle-card">
+            <div class="bundle-card-top-row">
+              <span class="bundle-category-pill"><i class="fa-solid fa-chess-knight"></i> Strategy Vault</span>
+              <span class="bundle-save-badge">SAVE $35</span>
+            </div>
+            <h3 class="bundle-title">The Master Euro Tactician Bundle</h3>
+            <p class="bundle-subtitle">The ultimate package for heavy economic strategy enthusiasts.</p>
+            <div class="bundle-items-checklist">
+              <div class="bundle-item-row"><i class="fa-solid fa-circle-check"></i> Brass: Birmingham Deluxe Board Game</div>
+              <div class="bundle-item-row"><i class="fa-solid fa-circle-check"></i> 100 Cast Metal Victorian Iron Clays</div>
+              <div class="bundle-item-row"><i class="fa-solid fa-circle-check"></i> 200 Archival Matte Card Sleeves</div>
+            </div>
+            <div class="bundle-pricing-row">
+              <div class="bundle-price-box">
+                <span class="bundle-price-current">$119.99</span>
+                <span class="bundle-price-orig">$154.99</span>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="AppState.addToCart('prod-15'); showToast('Euro Tactician Bundle added to Cart!', 'success')" style="width: 100%;">
+              <i class="fa-solid fa-cart-plus"></i> Claim Euro Bundle
+            </button>
+          </div>
+
+          <!-- Bundle 2 -->
+          <div class="bundle-card">
+            <div class="bundle-card-top-row">
+              <span class="bundle-category-pill"><i class="fa-solid fa-dragon"></i> RPG Armory</span>
+              <span class="bundle-save-badge">SAVE $45</span>
+            </div>
+            <h3 class="bundle-title">The Complete Dungeon Master Armory</h3>
+            <p class="bundle-subtitle">Everything you need to run epic tabletop RPG sessions from Day 1.</p>
+            <div class="bundle-items-checklist">
+              <div class="bundle-item-row"><i class="fa-solid fa-circle-check"></i> D&D 2024 Player's Handbook (Hardcover)</div>
+              <div class="bundle-item-row"><i class="fa-solid fa-circle-check"></i> Prismatic Zinc-Alloy 7-Die Metal Set</div>
+              <div class="bundle-item-row"><i class="fa-solid fa-circle-check"></i> 4-Panel Folding DM Magnetic Screen</div>
+            </div>
+            <div class="bundle-pricing-row">
+              <div class="bundle-price-box">
+                <span class="bundle-price-current">$89.99</span>
+                <span class="bundle-price-orig">$134.99</span>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="AppState.addToCart('prod-7'); showToast('Dungeon Master Bundle added to Cart!', 'success')" style="width: 100%;">
+              <i class="fa-solid fa-cart-plus"></i> Claim DM Bundle
+            </button>
+          </div>
+
+          <!-- Bundle 3 -->
+          <div class="bundle-card">
+            <div class="bundle-card-top-row">
+              <span class="bundle-category-pill"><i class="fa-solid fa-feather"></i> Family Night</span>
+              <span class="bundle-save-badge">SAVE $25</span>
+            </div>
+            <h3 class="bundle-title">The Cozy Game Night Starter Pack</h3>
+            <p class="bundle-subtitle">Relaxing engine-building and wildlife puzzles for friends & family.</p>
+            <div class="bundle-items-checklist">
+              <div class="bundle-item-row"><i class="fa-solid fa-circle-check"></i> Wingspan Collector's Edition</div>
+              <div class="bundle-item-row"><i class="fa-solid fa-circle-check"></i> Cascadia Pacific Wildlife Game</div>
+              <div class="bundle-item-row"><i class="fa-solid fa-circle-check"></i> Velvet Dice Rolling Tray</div>
+            </div>
+            <div class="bundle-pricing-row">
+              <div class="bundle-price-box">
+                <span class="bundle-price-current">$94.99</span>
+                <span class="bundle-price-orig">$119.99</span>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="AppState.addToCart('prod-3'); showToast('Cozy Game Night Bundle added to Cart!', 'success')" style="width: 100%;">
+              <i class="fa-solid fa-cart-plus"></i> Claim Cozy Bundle
+            </button>
+          </div>
+        </div>
+
+        <!-- Collector Perk Ribbon & Game Master Concierge CTA integrated into Section 6 -->
+        <div class="pre-footer-cta-card">
+          <span class="badge badge-gold" style="margin-bottom: 0.75rem;"><i class="fa-solid fa-gift"></i> Vault Exclusive Collector Perk</span>
+          <h3 class="pre-footer-cta-title">BUY ANY 2 BOARD GAMES, <span class="gradient-text">GET 100 MATTE SLEEVES FREE</span></h3>
+          <p class="pre-footer-cta-desc">
+            Protect your treasured cards against accidental drink spills, corner scuffs, and heavy tournament wear. A 100-pack of archival matte sleeves ($14.99 value) is automatically gifted to your cart.
+          </p>
+          <div class="pre-footer-cta-actions">
+            <button class="btn btn-primary" onclick="showToast('100 Free Archival Sleeves Perk Activated in Cart!', 'success')">
+              <i class="fa-solid fa-sparkles"></i> Claim 100 Free Sleeves
+            </button>
+            <a href="recommendations.html" class="btn btn-secondary">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Use AI Matchmaker Quiz
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. COMPLETE FOOTER ==================== -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+              <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+              <span class="brand-text">HOBB<span>IX</span></span>
+            </a>
+            <p>
+              Your ultimate destination for curated board games, tabletop RPGs, custom polyhedral dice, and unforgettable community game nights.
+            </p>
+            <div class="footer-social-links">
+              <a href="#" class="footer-social-btn" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+              <a href="#" class="footer-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="footer-social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#" class="footer-social-btn" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h4>Explore Store</h4>
+            <ul class="footer-links-list">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="home-2.html">Home 2 (Alt Showcase)</a></li>
+              <li><a href="about.html">About Our Lounge</a></li>
+              <li><a href="products.html">Product Catalog</a></li>
+              <li><a href="recommendations.html">Game Matchmaker</a></li>
+              <li><a href="blog.html">Tabletop Chronicle</a></li>
+              <li><a href="contact.html">Contact & Hours</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Game Categories</h4>
+            <ul class="footer-links-list">
+              <li><a href="products.html">Heavy Strategy Games</a></li>
+              <li><a href="products.html">Living Card Games</a></li>
+              <li><a href="products.html">Family & Party Games</a></li>
+              <li><a href="products.html">D&D and RPG Tomes</a></li>
+              <li><a href="products.html">Custom Dice & Sleeves</a></li>
+              <li><a href="products.html">2-Player Duels</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Vault Lounge</h4>
+            <ul class="footer-contact-info">
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <span>404 Dragon Run Boulevard, Suite 12, Seattle, WA 98101</span>
+              </li>
+              <li>
+                <i class="fa-regular fa-clock"></i>
+                <span>Mon-Sun: 11:00 AM – 11:00 PM<br>(Game Nights till Midnight)</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <span>+1 (800) 555-MYTHIC</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-envelope"></i>
+                <span>gamemaster@hobbix.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Hobbix Tabletop Gaming Co. All rights reserved.</p>
+          <div class="footer-payment-badges">
+            <i class="fa-brands fa-cc-visa" title="Visa"></i>
+            <i class="fa-brands fa-cc-mastercard" title="MasterCard"></i>
+            <i class="fa-brands fa-cc-amex" title="American Express"></i>
+            <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+            <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Global Drawers & Modals -->
+  <div class="side-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3><i class="fa-solid fa-cart-shopping text-gold"></i> Your Vault Cart (<span class="cart-count">0</span>)</h3>
+      <button class="drawer-close-btn" onclick="closeCartDrawer()" aria-label="Close Cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-free-shipping">
+      <div id="free-shipping-status">Add <strong>$75.00</strong> more for Free Delivery</div>
+      <div class="shipping-progress-bar"><div class="shipping-progress-fill" id="shipping-progress-fill"></div></div>
+    </div>
+    <div class="cart-body" id="cart-items-list"></div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span><span id="cart-subtotal-amount" class="font-mono">$0.00</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>Estimated Shipping</span><span style="color: var(--accent-emerald);">Calculated at Checkout</span>
+      </div>
+      <div class="cart-summary-row total">
+        <span>Total</span><span id="cart-total-amount">$0.00</span>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-primary" onclick="handlePlaceOrder()"><i class="fa-solid fa-bag-shopping"></i> Place Order</button>
+        <button class="btn btn-secondary btn-sm" onclick="closeCartDrawer()">Continue Browsing</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="search-modal">
+    <div class="modal-content search-modal-box">
+      <button class="modal-close-btn" onclick="closeSearchModal()" aria-label="Close Search"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body">
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" class="search-input" id="global-search-input" placeholder="Search 1,500+ board games, expansions, dice, RPGs...">
+        </div>
+        <div class="search-results-list" id="search-results-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="quickview-modal">
+    <div class="modal-content" style="max-width: 780px;">
+      <button class="modal-close-btn" onclick="closeQuickView()" aria-label="Close Quick View"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body" id="quickview-modal-body"></div>
+    </div>
+  </div>
+
+  <div class="mobile-drawer-overlay" id="modal-overlay-backdrop" onclick="closeCartDrawer()"></div>
+  <div class="toast-container" id="toast-container"></div>
+  <button class="back-to-top" id="back-to-top-btn" aria-label="Scroll to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>

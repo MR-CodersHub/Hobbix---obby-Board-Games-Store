@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobbix | Contact, Lounge Location & Bulk Orders</title>
+  <meta name="description" content="Contact the Hobbix Game Masters, visit our Seattle game lounge, inquire about club bookings and bulk educational board game orders.">
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <!-- Font Awesome 6.5.1 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== GLOBAL HEADER ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+        <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+        <span class="brand-text">HOBB<span>IX</span></span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home-2.html" class="nav-link">Home 2</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="recommendations.html" class="nav-link">Recommendations</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Theme Toggle -->
+        <button class="header-action-btn theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <!-- RTL Toggle -->
+        <button class="header-action-btn rtl-toggle-btn" id="rtl-toggle-btn" onclick="toggleRTL()" title="Toggle RTL/LTR Direction" aria-label="Toggle RTL">
+          <i class="fa-solid fa-language"></i>
+        </button>
+        <button class="header-action-btn cart-btn-desktop" onclick="openCartDrawer()" title="Shopping Cart" aria-label="Shopping Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count">0</span>
+        </button>
+        <a href="products.html" class="btn btn-primary btn-sm header-cta-btn">
+          <i class="fa-solid fa-dice-d20"></i> Explore Vault
+        </a>
+        <button class="hamburger-btn" id="mobile-hamburger-btn" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+        <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+        <span class="brand-text">HOBB<span>IX</span></span>
+      </a>
+      <button class="drawer-close-btn" id="mobile-drawer-close" onclick="window.closeMobileMenu()" aria-label="Close Navigation Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="home-2.html" class="mobile-nav-link">Home 2 <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="products.html" class="mobile-nav-link">Products <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="recommendations.html" class="mobile-nav-link">Recommendations <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="blog.html" class="mobile-nav-link">Blog <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link active">Contact <i class="fa-solid fa-chevron-right"></i></a>
+    </nav>
+    <div class="mobile-drawer-footer" style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08);">
+      <button class="btn btn-secondary btn-block" onclick="window.closeMobileMenu(); openCartDrawer();" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; border-radius: var(--radius-md);">
+        <span style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;"><i class="fa-solid fa-cart-shopping text-gold"></i> View Vault Cart</span>
+        <span class="badge badge-gold"><span class="cart-count">0</span> Items</span>
+      </button>
+      <a href="products.html" class="btn btn-primary btn-block" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; font-weight: 700; border-radius: var(--radius-md);">
+        <i class="fa-solid fa-dice-d20"></i> Explore Vault
+      </a>
+      <div style="display: flex; gap: 0.65rem; margin-top: 0.25rem;">
+        <button class="btn btn-secondary btn-sm" onclick="toggleTheme()" style="flex: 1; padding: 0.5rem 0.65rem; font-size: 0.82rem;">
+          <i class="fa-solid fa-circle-half-stroke"></i> Theme
+        </button>
+        <button class="btn btn-secondary btn-sm" onclick="toggleRTL()" style="flex: 1; padding: 0.5rem 0.65rem; font-size: 0.82rem;">
+          <i class="fa-solid fa-language"></i> RTL / LTR
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay"></div>
+
+  <main>
+    <!-- ==================== 1. CONTACT HERO ==================== -->
+    <section class="section-sm page-hero-banner" id="contact-hero">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-tower-broadcast"></i> Get in Touch</span>
+          <h1 class="section-title">WE’D LOVE TO <span class="gradient-text">HEAR FROM YOU</span></h1>
+          <p class="section-subtitle">
+            Visit our Seattle game lounge, ask rules questions, book private D&D rooms, or submit bulk school and club inquiries.
+          </p>
+          <div class="title-divider"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. STORE INFORMATION CARDS ==================== -->
+    <section class="section" id="store-info-cards" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="contact-info-grid">
+          <!-- Card 1: Address -->
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Lounge & Store</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+              404 Dragon Run Boulevard<br>Suite 12, Seattle, WA 98101
+            </p>
+            <span class="text-gold font-mono" style="font-size: 0.8rem; margin-top: 0.75rem; display: inline-block;">Free Street & Garage Parking</span>
+          </div>
+
+          <!-- Card 2: Hours -->
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><i class="fa-regular fa-clock"></i></div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Operating Hours</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+              Mon – Fri: 11:00 AM – 11:00 PM<br>
+              Sat – Sun: 10:00 AM – Midnight
+            </p>
+            <span class="text-gold font-mono" style="font-size: 0.8rem; margin-top: 0.75rem; display: inline-block;">Open 7 Days A Week</span>
+          </div>
+
+          <!-- Card 3: Direct Phone -->
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><i class="fa-solid fa-phone"></i></div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Customer Hotline</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+              +1 (800) 555-MYTHIC<br>
+              +1 (206) 555-4392 (Local)
+            </p>
+            <span class="text-gold font-mono" style="font-size: 0.8rem; margin-top: 0.75rem; display: inline-block;">Live Game Master Phone Support</span>
+          </div>
+
+          <!-- Card 4: Email -->
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Electronic Mail</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+              orders@hobbix.com<br>
+              events@hobbix.com
+            </p>
+            <span class="text-gold font-mono" style="font-size: 0.8rem; margin-top: 0.75rem; display: inline-block;">&lt; 2 Hour Reply Time</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. STORE LOCATION & MAP AREA ==================== -->
+    <section class="section" id="location-map">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-map-location-dot"></i> Physical Realm</span>
+          <h2 class="section-title">Find Our <span class="text-gold">Game Lounge</span></h2>
+          <p class="section-subtitle">Located in the heart of Downtown Seattle with easy transit links and dedicated parking.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="map-showcase-container">
+          <!-- Stylized Google Map Embed -->
+          <div class="map-embed-wrapper">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d86082.02325372338!2d-122.378955!3d47.613174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54906ab6b1225723%3A0xd653374932f0ce34!2sSeattle%2C%20WA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade" 
+              title="Hobbix Store Location Map">
+            </iframe>
+          </div>
+
+          <!-- Directions and Transit Details -->
+          <div class="map-details-side">
+            <span class="section-tag"><i class="fa-solid fa-compass-drafting"></i> Travel Guide</span>
+            <h3 style="font-size: 1.8rem; margin: 0.5rem 0 1rem;">HOW TO REACH US</h3>
+            <ul style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-secondary);">
+              <li style="display: flex; gap: 0.75rem;">
+                <i class="fa-solid fa-train text-gold" style="font-size: 1.1rem; margin-top: 0.2rem;"></i>
+                <span><strong>Light Rail:</strong> 3-minute walk from Westlake Station (Pine St Exit).</span>
+              </li>
+              <li style="display: flex; gap: 0.75rem;">
+                <i class="fa-solid fa-car text-orange" style="font-size: 1.1rem; margin-top: 0.2rem;"></i>
+                <span><strong>By Car:</strong> Take I-5 Stewart St exit. Validated 2-hour underground parking.</span>
+              </li>
+              <li style="display: flex; gap: 0.75rem;">
+                <i class="fa-solid fa-wheelchair text-purple" style="font-size: 1.1rem; margin-top: 0.2rem;"></i>
+                <span><strong>Accessibility:</strong> Full ADA wheelchair ramps, wide table aisles & elevators.</span>
+              </li>
+            </ul>
+            <div style="margin-top: 1.75rem;">
+              <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-diamond-turn-right"></i> Open in Google Maps
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. CONTACT FORM ==================== -->
+    <section class="section" id="contact-form-section" style="background: var(--bg-surface);">
+      <div class="container" style="max-width: 860px;">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-message"></i> General Inquiries</span>
+          <h2 class="section-title">Send Us a <span class="text-gold">Message</span></h2>
+          <p class="section-subtitle">Need game advice, rules clarifications, or table reservations? Drop us a note.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="form-card">
+          <form id="main-contact-form" novalidate>
+            <div class="form-grid-2col">
+              <div class="form-group">
+                <label for="contact-name">Your Full Name *</label>
+                <input type="text" class="form-control" id="contact-name" placeholder="e.g. Marcus Vance" required>
+                <div class="form-error-msg">Please enter your full name (minimum 2 characters).</div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email">Email Address *</label>
+                <input type="email" class="form-control" id="contact-email" placeholder="e.g. marcus@realm.com" required>
+                <div class="form-error-msg">Please enter a valid email address.</div>
+              </div>
+            </div>
+
+            <div class="form-grid-2col">
+              <div class="form-group">
+                <label for="contact-subject">Inquiry Subject</label>
+                <select class="form-control" id="contact-subject">
+                  <option value="recommendation">Game Recommendation Help</option>
+                  <option value="order">Online Order & Shipping Status</option>
+                  <option value="lounge">Tabletop Lounge Reservation</option>
+                  <option value="tournaments">Community Tournament Registration</option>
+                  <option value="other">General Feedback</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-game-interest">Favorite Game Category</label>
+                <select class="form-control" id="contact-game-interest">
+                  <option value="strategy">Heavy Strategy & Euro</option>
+                  <option value="rpg">D&D & Tabletop RPG</option>
+                  <option value="card">Living Card Games & MTG</option>
+                  <option value="family">Family & Casual</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Your Message *</label>
+              <textarea class="form-control" id="contact-message" rows="5" placeholder="How can our Game Masters assist you today?" required></textarea>
+              <div class="form-error-msg">Please write a message with at least 10 characters.</div>
+            </div>
+
+            <div style="text-align: right; margin-top: 1.5rem;">
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                <i class="fa-solid fa-paper-plane"></i> Dispatch Message to Vault
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. CLUB OR BULK ORDER ENQUIRY FORM ==================== -->
+    <section class="section" id="bulk-order-inquiry">
+      <div class="container" style="max-width: 860px;">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-users-rectangle"></i> Clubs & Schools</span>
+          <h2 class="section-title">Club & Bulk <span class="text-gold">Order Inquiry</span></h2>
+          <p class="section-subtitle">Discounts for university clubs, gaming cafes, school libraries, and corporate team building.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="form-card">
+          <form id="bulk-order-form" novalidate>
+            <div class="form-grid-2col">
+              <div class="form-group">
+                <label for="bulk-org-name">Organization / Club Name *</label>
+                <input type="text" class="form-control" id="bulk-org-name" placeholder="e.g., UW Board Game Society" required>
+                <div class="form-error-msg">Please provide your organization or club name.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="bulk-contact-person">Contact Person *</label>
+                <input type="text" class="form-control" id="bulk-contact-person" placeholder="e.g., Sarah Chen" required>
+                <div class="form-error-msg">Please enter a contact person.</div>
+              </div>
+            </div>
+
+            <div class="form-grid-2col">
+              <div class="form-group">
+                <label for="bulk-email">Official Contact Email *</label>
+                <input type="email" class="form-control" id="bulk-email" placeholder="e.g., president@uwbg.edu" required>
+                <div class="form-error-msg">Please enter a valid official email.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="bulk-size">Estimated Order Volume / Group Size *</label>
+                <input type="text" class="form-control" id="bulk-size" placeholder="e.g., 25 games or 40 players" required>
+                <div class="form-error-msg">Please specify order quantity or club size.</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="bulk-package">Requested Bulk Package</label>
+              <select class="form-control" id="bulk-package">
+                <option value="school">Educational & School Starter Bundle (20% Off)</option>
+                <option value="club">University & Gaming Club Wholesale (25% Off)</option>
+                <option value="corporate">Corporate Game Night Rental & Host</option>
+                <option value="custom">Custom Commercial Wholesale Order</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="bulk-notes">Specific Games or Equipment Requested</label>
+              <textarea class="form-control" id="bulk-notes" rows="4" placeholder="List titles, player counts, accessories or event dates you need..."></textarea>
+            </div>
+
+            <div style="text-align: right; margin-top: 1.5rem;">
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                <i class="fa-solid fa-handshake"></i> Submit Wholesale Inquiry
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. FAQ & SUPPORT CTA WITH COMPLETE FOOTER ==================== -->
+    <section class="section" id="contact-faq" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-circle-question"></i> Answers & Support</span>
+          <h2 class="section-title">Frequently Asked <span class="text-gold">Questions</span></h2>
+          <p class="section-subtitle">Quick solutions for shipping, lounge reservations, and game piece replacements.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item active">
+            <button class="faq-question">
+              <span>Do I need a reservation to play games in your lounge?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              Walk-ins are always warmly welcomed! However, for Friday & Saturday community game nights or our private D&D tavern room, we recommend booking 24 hours in advance to guarantee a table.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do you protect games from transit damage?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              We use our proprietary Corner-Shield packing: extra-thick reinforced corner brackets, 360-degree air-cushion wrap, and heavy double-wall cardboard boxes. If a game arrives damaged, we replace it immediately for free.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can you teach us how to play the game we choose?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              Yes! Our staff are certified Game Masters who know the rules to over 800 titles in our lending library. We will gladly teach setup, core mechanics, and your first turn.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is your return and missing parts policy?</span>
+              <i class="fa-solid fa-chevron-down faq-icon"></i>
+            </button>
+            <div class="faq-answer">
+              We offer 30-day unopened returns. If your brand-new game is missing a punchboard token or plastic miniature straight from the publisher, we pull a replacement from our parts vault and mail it with tracking.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Complete Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+            <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+            <span class="brand-text">HOBB<span>IX</span></span>
+          </a>
+          <p>
+            Your ultimate destination for curated board games, tabletop RPGs, custom polyhedral dice, and unforgettable community game nights.
+          </p>
+          <div class="footer-social-links">
+            <a href="#" class="footer-social-btn" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Explore Store</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="home-2.html">Home 2 (Alt Showcase)</a></li>
+            <li><a href="about.html">About Our Lounge</a></li>
+            <li><a href="products.html">Product Catalog</a></li>
+            <li><a href="recommendations.html">Game Matchmaker</a></li>
+            <li><a href="blog.html">Tabletop Chronicle</a></li>
+            <li><a href="contact.html">Contact & Hours</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Game Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="products.html">Heavy Strategy Games</a></li>
+            <li><a href="products.html">Living Card Games</a></li>
+            <li><a href="products.html">Family & Party Games</a></li>
+            <li><a href="products.html">D&D and RPG Tomes</a></li>
+            <li><a href="products.html">Custom Dice & Sleeves</a></li>
+            <li><a href="products.html">2-Player Duels</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Vault Lounge</h4>
+          <ul class="footer-contact-info">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>404 Dragon Run Boulevard, Suite 12, Seattle, WA 98101</span>
+            </li>
+            <li>
+              <i class="fa-regular fa-clock"></i>
+              <span>Mon-Sun: 11:00 AM – 11:00 PM<br>(Game Nights till Midnight)</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+1 (800) 555-MYTHIC</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>gamemaster@hobbix.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Hobbix Tabletop Gaming Co. All rights reserved.</p>
+        <div class="footer-payment-badges">
+          <i class="fa-brands fa-cc-visa" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" title="MasterCard"></i>
+          <i class="fa-brands fa-cc-amex" title="American Express"></i>
+          <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+          <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Global Drawers & Modals -->
+  <div class="side-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3><i class="fa-solid fa-cart-shopping text-gold"></i> Your Vault Cart (<span class="cart-count">0</span>)</h3>
+      <button class="drawer-close-btn" onclick="closeCartDrawer()" aria-label="Close Cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-free-shipping">
+      <div id="free-shipping-status">Add <strong>$75.00</strong> more for Free Delivery</div>
+      <div class="shipping-progress-bar"><div class="shipping-progress-fill" id="shipping-progress-fill"></div></div>
+    </div>
+    <div class="cart-body" id="cart-items-list"></div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span><span id="cart-subtotal-amount" class="font-mono">$0.00</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>Estimated Shipping</span><span style="color: var(--accent-emerald);">Calculated at Checkout</span>
+      </div>
+      <div class="cart-summary-row total">
+        <span>Total</span><span id="cart-total-amount">$0.00</span>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-primary" onclick="handlePlaceOrder()"><i class="fa-solid fa-bag-shopping"></i> Place Order</button>
+        <button class="btn btn-secondary btn-sm" onclick="closeCartDrawer()">Continue Browsing</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="search-modal">
+    <div class="modal-content search-modal-box">
+      <button class="modal-close-btn" onclick="closeSearchModal()" aria-label="Close Search"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body">
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" class="search-input" id="global-search-input" placeholder="Search 1,500+ board games, expansions, dice, RPGs...">
+        </div>
+        <div class="search-results-list" id="search-results-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="quickview-modal">
+    <div class="modal-content" style="max-width: 780px;">
+      <button class="modal-close-btn" onclick="closeQuickView()" aria-label="Close Quick View"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body" id="quickview-modal-body"></div>
+    </div>
+  </div>
+
+  <div class="mobile-drawer-overlay" id="modal-overlay-backdrop" onclick="closeCartDrawer()"></div>
+  <div class="toast-container" id="toast-container"></div>
+  <button class="back-to-top" id="back-to-top-btn" aria-label="Scroll to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>

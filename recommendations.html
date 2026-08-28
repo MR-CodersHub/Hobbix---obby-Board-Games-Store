@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobbix | Tabletop Game Matchmaker & Recommendations</title>
+  <meta name="description" content="Use our interactive tabletop recommendation wizard at Hobbix to discover the ideal board game for your player count, age group, and play style.">
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <!-- Font Awesome 6.5.1 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== GLOBAL HEADER ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+        <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+        <span class="brand-text">HOBB<span>IX</span></span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home-2.html" class="nav-link">Home 2</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="recommendations.html" class="nav-link active">Recommendations</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Theme Toggle -->
+        <button class="header-action-btn theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <!-- RTL Toggle -->
+        <button class="header-action-btn rtl-toggle-btn" id="rtl-toggle-btn" onclick="toggleRTL()" title="Toggle RTL/LTR Direction" aria-label="Toggle RTL">
+          <i class="fa-solid fa-language"></i>
+        </button>
+        <button class="header-action-btn cart-btn-desktop" onclick="openCartDrawer()" title="Shopping Cart" aria-label="Shopping Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count">0</span>
+        </button>
+        <a href="products.html" class="btn btn-primary btn-sm header-cta-btn">
+          <i class="fa-solid fa-dice-d20"></i> Explore Vault
+        </a>
+        <button class="hamburger-btn" id="mobile-hamburger-btn" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+        <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+        <span class="brand-text">HOBB<span>IX</span></span>
+      </a>
+      <button class="drawer-close-btn" id="mobile-drawer-close" onclick="window.closeMobileMenu()" aria-label="Close Navigation Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="home-2.html" class="mobile-nav-link">Home 2 <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="products.html" class="mobile-nav-link">Products <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="recommendations.html" class="mobile-nav-link active">Recommendations <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="blog.html" class="mobile-nav-link">Blog <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact <i class="fa-solid fa-chevron-right"></i></a>
+    </nav>
+    <div class="mobile-drawer-footer" style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08);">
+      <button class="btn btn-secondary btn-block" onclick="window.closeMobileMenu(); openCartDrawer();" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; border-radius: var(--radius-md);">
+        <span style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;"><i class="fa-solid fa-cart-shopping text-gold"></i> View Vault Cart</span>
+        <span class="badge badge-gold"><span class="cart-count">0</span> Items</span>
+      </button>
+      <a href="products.html" class="btn btn-primary btn-block" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; font-weight: 700; border-radius: var(--radius-md);">
+        <i class="fa-solid fa-dice-d20"></i> Explore Vault
+      </a>
+      <div style="display: flex; gap: 0.65rem; margin-top: 0.25rem;">
+        <button class="btn btn-secondary btn-sm" onclick="toggleTheme()" style="flex: 1; padding: 0.5rem 0.65rem; font-size: 0.82rem;">
+          <i class="fa-solid fa-circle-half-stroke"></i> Theme
+        </button>
+        <button class="btn btn-secondary btn-sm" onclick="toggleRTL()" style="flex: 1; padding: 0.5rem 0.65rem; font-size: 0.82rem;">
+          <i class="fa-solid fa-language"></i> RTL / LTR
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay"></div>
+
+  <main>
+    <!-- ==================== 1. FIND THE PERFECT GAME HERO ==================== -->
+    <section class="section-sm" id="rec-hero" style="background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 60%), linear-gradient(180deg, rgba(18,13,40,0.95) 0%, var(--bg-main) 100%); border-bottom: 1px solid var(--glass-border); padding: 4rem 0 3.25rem;">
+      <div class="container">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <span class="section-tag" style="margin-bottom: 0.85rem;"><i class="fa-solid fa-wand-magic-sparkles"></i> AI & Tabletop Matchmaker</span>
+          <h1 class="section-title" style="font-size: clamp(1.75rem, 3.2vw, 2.4rem); line-height: 1.2; margin-bottom: 0.85rem;">
+            FIND THE <span class="text-gold">PERFECT GAME</span> FOR YOUR TABLE
+          </h1>
+          <p class="section-subtitle" style="margin: 0 auto 1.25rem; font-size: 1rem; color: var(--text-secondary); max-width: 620px; line-height: 1.65;">
+            Answer a few quick questions about your group's size and taste, or jump directly into our staff-curated playlists by player count, age, and game style.
+          </p>
+          <div class="rec-hero-pills">
+            <a href="#interactive-matchmaker-tool" class="rec-hero-pill"><i class="fa-solid fa-compass text-gold"></i> 4-Step Matchmaker</a>
+            <a href="#player-count-playlists" class="rec-hero-pill"><i class="fa-solid fa-users text-gold"></i> By Player Count</a>
+            <a href="#age-difficulty-playlists" class="rec-hero-pill"><i class="fa-solid fa-brain text-gold"></i> By Complexity</a>
+            <a href="#play-style-playlists" class="rec-hero-pill"><i class="fa-solid fa-dice-d20 text-gold"></i> By Play Style</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. INTERACTIVE "HELP ME CHOOSE" DYNAMIC TOOL ==================== -->
+    <section class="section" id="interactive-matchmaker-tool" style="padding-top: 4rem;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-compass"></i> Step-By-Step Matcher</span>
+          <h2 class="section-title" style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Help Me <span class="text-gold">Choose Tool</span></h2>
+          <p class="section-subtitle">Select your player count, audience, and preferred play style to receive tailored recommendations with match scores.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="wizard-container" id="recommendation-wizard" style="max-width: 960px; margin: 0 auto;">
+          <!-- Step Indicators -->
+          <div class="wizard-steps-indicator">
+            <div class="wizard-step-node active" data-step="1">
+              <span class="node-num">1</span>
+              <span>Player Count</span>
+            </div>
+            <div class="wizard-step-node" data-step="2">
+              <span class="node-num">2</span>
+              <span>Audience & Age</span>
+            </div>
+            <div class="wizard-step-node" data-step="3">
+              <span class="node-num">3</span>
+              <span>Game Style / Vibe</span>
+            </div>
+            <div class="wizard-step-node" data-step="4">
+              <span class="node-num">4</span>
+              <span>Your Matches</span>
+            </div>
+          </div>
+
+          <!-- Step 1: Player Count -->
+          <div id="wizard-step-1">
+            <h3 style="text-align: center; font-size: 1.4rem;">How many players will usually be at your table?</h3>
+            <div class="wizard-options-grid">
+              <div class="wizard-option-card selected" data-type="players" data-value="1-2">
+                <div class="wizard-option-icon"><i class="fa-solid fa-user-group"></i></div>
+                <h4>1-2 Players</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Intimate duels or solo adventures</p>
+              </div>
+              <div class="wizard-option-card" data-type="players" data-value="3-4">
+                <div class="wizard-option-icon"><i class="fa-solid fa-people-group"></i></div>
+                <h4>3-4 Players</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Classic tabletop game group</p>
+              </div>
+              <div class="wizard-option-card" data-type="players" data-value="5+">
+                <div class="wizard-option-icon"><i class="fa-solid fa-users"></i></div>
+                <h4>5-10 Players</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Party games & social deduction</p>
+              </div>
+              <div class="wizard-option-card" data-type="players" data-value="any">
+                <div class="wizard-option-icon"><i class="fa-solid fa-shuffle"></i></div>
+                <h4>Flexible Count</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Scales smoothly from 2 to 6</p>
+              </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+              <button class="btn btn-primary" id="wizard-step1-next">
+                Next: Choose Audience <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Audience / Age -->
+          <div id="wizard-step-2" style="display: none;">
+            <h3 style="text-align: center; font-size: 1.4rem;">Who are you gaming with?</h3>
+            <div class="wizard-options-grid">
+              <div class="wizard-option-card selected" data-type="audience" data-value="family">
+                <div class="wizard-option-icon"><i class="fa-solid fa-people-roof"></i></div>
+                <h4>Family & Kids</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Easy rules, accessible fun</p>
+              </div>
+              <div class="wizard-option-card" data-type="audience" data-value="casual">
+                <div class="wizard-option-icon"><i class="fa-solid fa-beer-mug-empty"></i></div>
+                <h4>Casual Friends</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Quick to learn, high player banter</p>
+              </div>
+              <div class="wizard-option-card" data-type="audience" data-value="tactical">
+                <div class="wizard-option-icon"><i class="fa-solid fa-chess"></i></div>
+                <h4>Strategy Enthusiasts</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Mid-to-heavy engine building</p>
+              </div>
+              <div class="wizard-option-card" data-type="audience" data-value="hardcore">
+                <div class="wizard-option-icon"><i class="fa-solid fa-skull"></i></div>
+                <h4>Hardcore Gamers</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">3+ hour campaigns & deep complexity</p>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+              <button class="btn btn-secondary" id="wizard-step2-prev">
+                <i class="fa-solid fa-arrow-left"></i> Back
+              </button>
+              <button class="btn btn-primary" id="wizard-step2-next">
+                Next: Select Game Vibe <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Game Style / Vibe -->
+          <div id="wizard-step-3" style="display: none;">
+            <h3 style="text-align: center; font-size: 1.4rem;">What theme and vibe are you looking for?</h3>
+            <div class="wizard-options-grid">
+              <div class="wizard-option-card selected" data-type="style" data-value="strategy">
+                <div class="wizard-option-icon"><i class="fa-solid fa-chess-knight"></i></div>
+                <h4>Deep Strategy & Euro</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Resource optimization & empires</p>
+              </div>
+              <div class="wizard-option-card" data-type="style" data-value="card">
+                <div class="wizard-option-icon"><i class="fa-solid fa-clone"></i></div>
+                <h4>Living Card & Deckbuild</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Synergy combos & cosmic horror</p>
+              </div>
+              <div class="wizard-option-card" data-type="style" data-value="rpg">
+                <div class="wizard-option-icon"><i class="fa-solid fa-dragon"></i></div>
+                <h4>Dungeon Crawl & RPG</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Epic narratives, loot & hero quests</p>
+              </div>
+              <div class="wizard-option-card" data-type="style" data-value="puzzle">
+                <div class="wizard-option-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+                <h4>Cozy Spatial & Tile Draft</h4>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Relaxing nature & mosaic patterns</p>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+              <button class="btn btn-secondary" id="wizard-step3-prev">
+                <i class="fa-solid fa-arrow-left"></i> Back
+              </button>
+              <button class="btn btn-primary" id="wizard-step3-submit">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Reveal My Best Matches
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 4: Results Container -->
+          <div id="wizard-results-container" style="display: none;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+              <span class="badge badge-gold" style="font-size: 0.85rem; padding: 0.4rem 1rem;">
+                <i class="fa-solid fa-bullseye"></i> Matchmaker Complete
+              </span>
+              <h3 style="font-size: 2rem; margin-top: 0.5rem;">YOUR TOP RECOMMENDED BOARD GAMES</h3>
+              <p style="color: var(--text-muted);">Ranked according to group size, complexity preference, and theme compatibility.</p>
+            </div>
+
+            <div class="recommendations-match-grid" id="wizard-matched-games-grid">
+              <!-- Rendered dynamically -->
+            </div>
+
+            <div style="text-align: center; margin-top: 2.5rem;">
+              <button class="btn btn-secondary" id="wizard-restart-btn">
+                <i class="fa-solid fa-rotate-left"></i> Restart Recommendation Quiz
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. RECOMMENDATIONS BY PLAYER COUNT ==================== -->
+    <section class="section" id="rec-by-player-count" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-users"></i> Curated Playlists</span>
+          <h2 class="section-title">Recommendations by <span class="text-gold">Player Count</span></h2>
+          <p class="section-subtitle">Handpicked masterworks tuned specifically to perform best at each player count.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="tabs-nav">
+          <button class="tab-btn rec-tab-btn active" data-type="couples">
+            <i class="fa-solid fa-heart"></i> Best for 2 Players / Couples
+          </button>
+          <button class="tab-btn rec-tab-btn" data-type="family">
+            <i class="fa-solid fa-people-group"></i> Best for 3-4 Players
+          </button>
+          <button class="tab-btn rec-tab-btn" data-type="party">
+            <i class="fa-solid fa-champagne-glasses"></i> Best for 5+ Party Nights
+          </button>
+          <button class="tab-btn rec-tab-btn" data-type="heavy">
+            <i class="fa-solid fa-brain"></i> Heavy Solo / Campaign
+          </button>
+        </div>
+
+        <div class="products-grid" id="rec-showcase-grid">
+          <!-- Rendered dynamically by js/pages.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. RECOMMENDATIONS BY AGE GROUP ==================== -->
+    <section class="section" id="rec-by-age-group">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-child-reaching"></i> Age Appropriate Fun</span>
+          <h2 class="section-title">Recommendations by <span class="text-gold">Age Group</span></h2>
+          <p class="section-subtitle">From young adventurers developing spatial skills to seasoned euro-gamers.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="age-tier-grid">
+          <!-- Tier 1: Kids & Junior -->
+          <div class="age-tier-card">
+            <div class="age-tier-header">
+              <div class="age-tier-icon gold"><i class="fa-solid fa-shapes"></i></div>
+              <span class="age-tier-badge">Ages 6 – 9</span>
+            </div>
+            <h3 class="age-tier-title">Junior Adventurers</h3>
+            <p class="age-tier-desc">
+              Tactile pieces, fast-paced turns, and cooperative problem-solving that keeps younger kids engaged and developing spatial logic.
+            </p>
+            <div class="age-tier-picks-box">
+              <i class="fa-solid fa-star text-gold"></i>
+              <span><strong>Top Picks:</strong> Azul, Cascadia</span>
+            </div>
+          </div>
+
+          <!-- Tier 2: Family Play -->
+          <div class="age-tier-card">
+            <div class="age-tier-header">
+              <div class="age-tier-icon orange"><i class="fa-solid fa-feather"></i></div>
+              <span class="age-tier-badge">Ages 10 – 13</span>
+            </div>
+            <h3 class="age-tier-title">Family Tabletop</h3>
+            <p class="age-tier-desc">
+              Gentle engine-builders and relaxing set-collection games where everyone builds a flourishing engine without high-conflict stress.
+            </p>
+            <div class="age-tier-picks-box">
+              <i class="fa-solid fa-star text-gold"></i>
+              <span><strong>Top Picks:</strong> Wingspan, Codenames</span>
+            </div>
+          </div>
+
+          <!-- Tier 3: Teens & Adults -->
+          <div class="age-tier-card">
+            <div class="age-tier-header">
+              <div class="age-tier-icon purple"><i class="fa-solid fa-scroll"></i></div>
+              <span class="age-tier-badge">Ages 14+</span>
+            </div>
+            <h3 class="age-tier-title">Teens & Adults</h3>
+            <p class="age-tier-desc">
+              Psychological bluffing, political intrigue, deep deckbuilding synergies, and rich tactical skirmish combat scenarios.
+            </p>
+            <div class="age-tier-picks-box">
+              <i class="fa-solid fa-star text-gold"></i>
+              <span><strong>Top Picks:</strong> Dune Imperium, Root</span>
+            </div>
+          </div>
+
+          <!-- Tier 4: Mastermind Heavy -->
+          <div class="age-tier-card">
+            <div class="age-tier-header">
+              <div class="age-tier-icon cyan"><i class="fa-solid fa-brain"></i></div>
+              <span class="age-tier-badge">Ages 16+</span>
+            </div>
+            <h3 class="age-tier-title">Mastermind Heavy</h3>
+            <p class="age-tier-desc">
+              Zero-luck industrial economics, intricate card interactions, multi-hour tactical decision trees, and massive campaign logs.
+            </p>
+            <div class="age-tier-picks-box">
+              <i class="fa-solid fa-star text-gold"></i>
+              <span><strong>Top Picks:</strong> Frosthaven, Terraforming Mars</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. RECOMMENDATIONS BY GAME STYLE ==================== -->
+    <section class="section" id="rec-by-game-style" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-chess-board"></i> Flavor & Mechanics</span>
+          <h2 class="section-title">Recommendations by <span class="text-gold">Game Style</span></h2>
+          <p class="section-subtitle">Explore tabletop genres based on the exact gameplay feeling you desire.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="genre-styles-grid">
+          <!-- 1. Co-Op -->
+          <div class="genre-card" onclick="window.location.href='products.html'">
+            <div class="genre-card-top">
+              <div class="genre-icon-wrap cyan"><i class="fa-solid fa-handshake"></i></div>
+              <span class="genre-card-badge">Co-Op Survival</span>
+            </div>
+            <h3 class="genre-card-title">Cooperative Mystery & Horror</h3>
+            <p class="genre-card-desc">Unite your party against relentless cosmic evils, ticking doom clocks, and deep narrative puzzles where everyone wins or loses together.</p>
+            <div class="genre-card-footer">
+              <div class="genre-picks-preview"><span>Hallmarks:</span> <strong>Arkham Horror · The Crew · Pandemic</strong></div>
+              <span class="genre-card-link">Explore 42 Titles <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 2. Engine Building -->
+          <div class="genre-card" onclick="window.location.href='products.html'">
+            <div class="genre-card-top">
+              <div class="genre-icon-wrap gold"><i class="fa-solid fa-industry"></i></div>
+              <span class="genre-card-badge">Engine Building</span>
+            </div>
+            <h3 class="genre-card-title">Economic & Engine Optimization</h3>
+            <p class="genre-card-desc">Transform modest starting actions into cascading resource juggernauts with intricate combos and interlocking supply chains.</p>
+            <div class="genre-card-footer">
+              <div class="genre-picks-preview"><span>Hallmarks:</span> <strong>Wingspan · Terraforming Mars · Brass</strong></div>
+              <span class="genre-card-link">Explore 58 Titles <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 3. Social Deduction -->
+          <div class="genre-card" onclick="window.location.href='products.html'">
+            <div class="genre-card-top">
+              <div class="genre-icon-wrap purple"><i class="fa-solid fa-masks-theater"></i></div>
+              <span class="genre-card-badge">Bluff & Treachery</span>
+            </div>
+            <h3 class="genre-card-title">Social Deduction & Hidden Roles</h3>
+            <p class="genre-card-desc">Test your poker face, read subtle micro-expressions, and root out secret traitors in high-voltage room-wide social debates.</p>
+            <div class="genre-card-footer">
+              <div class="genre-picks-preview"><span>Hallmarks:</span> <strong>Secret Hitler · Blood on Clocktower</strong></div>
+              <span class="genre-card-link">Explore 29 Titles <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 4. Asymmetric Warfare -->
+          <div class="genre-card" onclick="window.location.href='products.html'">
+            <div class="genre-card-top">
+              <div class="genre-icon-wrap orange"><i class="fa-solid fa-shield-halved"></i></div>
+              <span class="genre-card-badge">Area Control</span>
+            </div>
+            <h3 class="genre-card-title">Asymmetric Warfare & Duels</h3>
+            <p class="genre-card-desc">Every player commands radically different rules, win conditions, and tactics across contested borders and political theaters.</p>
+            <div class="genre-card-footer">
+              <div class="genre-picks-preview"><span>Hallmarks:</span> <strong>Root Woodland · Dune: Imperium · Scythe</strong></div>
+              <span class="genre-card-link">Explore 34 Titles <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 5. Dungeon Crawl -->
+          <div class="genre-card" onclick="window.location.href='products.html'">
+            <div class="genre-card-top">
+              <div class="genre-icon-wrap rose"><i class="fa-solid fa-dungeon"></i></div>
+              <span class="genre-card-badge">Campaign RPG</span>
+            </div>
+            <h3 class="genre-card-title">Tactical Dungeon Crawl & Legacy</h3>
+            <p class="genre-card-desc">Level up unique character classes, unlock sealed legacy envelopes, and battle AI monster decks in persistent epic campaigns.</p>
+            <div class="genre-card-footer">
+              <div class="genre-picks-preview"><span>Hallmarks:</span> <strong>Frosthaven · Gloomhaven · D&D 2024</strong></div>
+              <span class="genre-card-link">Explore 38 Titles <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+
+          <!-- 6. Spatial Tile Drafting -->
+          <div class="genre-card" onclick="window.location.href='products.html'">
+            <div class="genre-card-top">
+              <div class="genre-icon-wrap emerald"><i class="fa-solid fa-gem"></i></div>
+              <span class="genre-card-badge">Spatial Puzzles</span>
+            </div>
+            <h3 class="genre-card-title">Spatial Tile Drafting & Patterns</h3>
+            <p class="genre-card-desc">Satisfying tactile placement of colorful resin tiles, mosaic stones, and nature habitats with approachable elegance.</p>
+            <div class="genre-card-footer">
+              <div class="genre-picks-preview"><span>Hallmarks:</span> <strong>Azul · Cascadia · Harmonies · Calico</strong></div>
+              <span class="genre-card-link">Explore 45 Titles <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. FINAL PRODUCTS CTA & COMPLETE FOOTER ==================== -->
+    <section class="section-sm" id="rec-final-cta">
+      <div class="container">
+        <div class="pre-footer-cta-card" style="margin-top: 0;">
+          <span class="badge badge-gold" style="margin-bottom: 0.75rem;"><i class="fa-solid fa-vault"></i> Full Vault Access</span>
+          <h2 class="pre-footer-cta-title">STILL UNDECIDED ON <span class="gradient-text">YOUR NEXT GAME?</span></h2>
+          <p class="pre-footer-cta-desc">
+            Browse all 1,500+ board game titles, deluxe expansions, and custom metal dice in our complete catalog.
+          </p>
+          <div class="pre-footer-cta-actions">
+            <a href="products.html" class="btn btn-primary btn-lg">
+              <i class="fa-solid fa-cart-shopping"></i> Browse Entire Catalog
+            </a>
+            <a href="contact.html" class="btn btn-secondary btn-lg">
+              <i class="fa-solid fa-comments"></i> Ask a Game Master
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Complete Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+            <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+            <span class="brand-text">HOBB<span>IX</span></span>
+          </a>
+          <p>
+            Your ultimate destination for curated board games, tabletop RPGs, custom polyhedral dice, and unforgettable community game nights.
+          </p>
+          <div class="footer-social-links">
+            <a href="#" class="footer-social-btn" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Explore Store</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="home-2.html">Home 2 (Alt Showcase)</a></li>
+            <li><a href="about.html">About Our Lounge</a></li>
+            <li><a href="products.html">Product Catalog</a></li>
+            <li><a href="recommendations.html">Game Matchmaker</a></li>
+            <li><a href="blog.html">Tabletop Chronicle</a></li>
+            <li><a href="contact.html">Contact & Hours</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Game Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="products.html">Heavy Strategy Games</a></li>
+            <li><a href="products.html">Living Card Games</a></li>
+            <li><a href="products.html">Family & Party Games</a></li>
+            <li><a href="products.html">D&D and RPG Tomes</a></li>
+            <li><a href="products.html">Custom Dice & Sleeves</a></li>
+            <li><a href="products.html">2-Player Duels</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Vault Lounge</h4>
+          <ul class="footer-contact-info">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>404 Dragon Run Boulevard, Suite 12, Seattle, WA 98101</span>
+            </li>
+            <li>
+              <i class="fa-regular fa-clock"></i>
+              <span>Mon-Sun: 11:00 AM – 11:00 PM<br>(Game Nights till Midnight)</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+1 (800) 555-MYTHIC</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>gamemaster@hobbix.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Hobbix Tabletop Gaming Co. All rights reserved.</p>
+        <div class="footer-payment-badges">
+          <i class="fa-brands fa-cc-visa" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" title="MasterCard"></i>
+          <i class="fa-brands fa-cc-amex" title="American Express"></i>
+          <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+          <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Global Drawers & Modals -->
+  <div class="side-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3><i class="fa-solid fa-cart-shopping text-gold"></i> Your Vault Cart (<span class="cart-count">0</span>)</h3>
+      <button class="drawer-close-btn" onclick="closeCartDrawer()" aria-label="Close Cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-free-shipping">
+      <div id="free-shipping-status">Add <strong>$75.00</strong> more for Free Delivery</div>
+      <div class="shipping-progress-bar"><div class="shipping-progress-fill" id="shipping-progress-fill"></div></div>
+    </div>
+    <div class="cart-body" id="cart-items-list"></div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span><span id="cart-subtotal-amount" class="font-mono">$0.00</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>Estimated Shipping</span><span style="color: var(--accent-emerald);">Calculated at Checkout</span>
+      </div>
+      <div class="cart-summary-row total">
+        <span>Total</span><span id="cart-total-amount">$0.00</span>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-primary" onclick="handlePlaceOrder()"><i class="fa-solid fa-bag-shopping"></i> Place Order</button>
+        <button class="btn btn-secondary btn-sm" onclick="closeCartDrawer()">Continue Browsing</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="search-modal">
+    <div class="modal-content search-modal-box">
+      <button class="modal-close-btn" onclick="closeSearchModal()" aria-label="Close Search"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body">
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" class="search-input" id="global-search-input" placeholder="Search 1,500+ board games, expansions, dice, RPGs...">
+        </div>
+        <div class="search-results-list" id="search-results-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="quickview-modal">
+    <div class="modal-content" style="max-width: 780px;">
+      <button class="modal-close-btn" onclick="closeQuickView()" aria-label="Close Quick View"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body" id="quickview-modal-body"></div>
+    </div>
+  </div>
+
+  <div class="mobile-drawer-overlay" id="modal-overlay-backdrop" onclick="closeCartDrawer()"></div>
+  <div class="toast-container" id="toast-container"></div>
+  <button class="back-to-top" id="back-to-top-btn" aria-label="Scroll to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>

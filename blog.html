@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobbix | Tabletop Chronicle, Guides & Strategy Blog</title>
+  <meta name="description" content="Read expert board game reviews, Dungeon Master advice, miniature painting tutorials, and strategy guides from tabletop champions at Hobbix.">
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <!-- Font Awesome 6.5.1 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== GLOBAL HEADER ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+        <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+        <span class="brand-text">HOBB<span>IX</span></span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home-2.html" class="nav-link">Home 2</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="recommendations.html" class="nav-link">Recommendations</a>
+        <a href="blog.html" class="nav-link active">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Theme Toggle -->
+        <button class="header-action-btn theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <!-- RTL Toggle -->
+        <button class="header-action-btn rtl-toggle-btn" id="rtl-toggle-btn" onclick="toggleRTL()" title="Toggle RTL/LTR Direction" aria-label="Toggle RTL">
+          <i class="fa-solid fa-language"></i>
+        </button>
+        <button class="header-action-btn cart-btn-desktop" onclick="openCartDrawer()" title="Shopping Cart" aria-label="Shopping Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count">0</span>
+        </button>
+        <a href="products.html" class="btn btn-primary btn-sm header-cta-btn">
+          <i class="fa-solid fa-dice-d20"></i> Explore Vault
+        </a>
+        <button class="hamburger-btn" id="mobile-hamburger-btn" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+        <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+        <span class="brand-text">HOBB<span>IX</span></span>
+      </a>
+      <button class="drawer-close-btn" id="mobile-drawer-close" onclick="window.closeMobileMenu()" aria-label="Close Navigation Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="home-2.html" class="mobile-nav-link">Home 2 <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link">About <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="products.html" class="mobile-nav-link">Products <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="recommendations.html" class="mobile-nav-link">Recommendations <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="blog.html" class="mobile-nav-link active">Blog <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact <i class="fa-solid fa-chevron-right"></i></a>
+    </nav>
+    <div class="mobile-drawer-footer" style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08);">
+      <button class="btn btn-secondary btn-block" onclick="window.closeMobileMenu(); openCartDrawer();" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; border-radius: var(--radius-md);">
+        <span style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;"><i class="fa-solid fa-cart-shopping text-gold"></i> View Vault Cart</span>
+        <span class="badge badge-gold"><span class="cart-count">0</span> Items</span>
+      </button>
+      <a href="products.html" class="btn btn-primary btn-block" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; font-weight: 700; border-radius: var(--radius-md);">
+        <i class="fa-solid fa-dice-d20"></i> Explore Vault
+      </a>
+      <div style="display: flex; gap: 0.65rem; margin-top: 0.25rem;">
+        <button class="btn btn-secondary btn-sm" onclick="toggleTheme()" style="flex: 1; padding: 0.5rem 0.65rem; font-size: 0.82rem;">
+          <i class="fa-solid fa-circle-half-stroke"></i> Theme
+        </button>
+        <button class="btn btn-secondary btn-sm" onclick="toggleRTL()" style="flex: 1; padding: 0.5rem 0.65rem; font-size: 0.82rem;">
+          <i class="fa-solid fa-language"></i> RTL / LTR
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay"></div>
+
+  <main>
+    <!-- ==================== 1. BLOG HERO ==================== -->
+    <section class="section-sm page-hero-banner" id="blog-hero">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-feather-pointed"></i> The Tabletop Chronicle</span>
+          <h1 class="section-title">NEWS, STRATEGIES & <span class="gradient-text">HOBBY GUIDES</span></h1>
+          <p class="section-subtitle">
+            Deep dives into Euro-game tactics, DM storytelling secrets, miniature painting workshops, and board game analysis.
+          </p>
+          <div class="title-divider"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. FEATURED ARTICLE ==================== -->
+    <section class="section" id="featured-article-spotlight">
+      <div class="container">
+        <div class="featured-article-card">
+          <img src="asstes/Dune Imperium – Uprising.jpg" alt="Featured Article Banner" class="featured-article-img">
+          
+          <div class="featured-article-body">
+            <div class="article-meta-row">
+              <span class="badge badge-gold"><i class="fa-solid fa-crown"></i> Cover Story</span>
+              <span class="badge badge-purple">Game Reviews</span>
+              <span><i class="fa-regular fa-clock"></i> 7 Min Read</span>
+            </div>
+            <h2 style="font-size: 2.2rem; margin: 0.5rem 0 1rem; line-height: 1.15;">
+              TOP 10 HEAVYWEIGHT BOARD GAMES OF 2026: THE STRATEGIC MASTERPIECES
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+              From complex resource optimization in deep space to industrial revolution economics and frozen tactical campaigns, we break down the definitive heavyweight board games you must experience this year.
+            </p>
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+              <div style="font-size: 0.9rem; color: var(--text-muted);">
+                By <strong class="text-white">Julian Thorne</strong> &bull; August 24, 2026
+              </div>
+              <a href="blog-detail.html?id=art-1" class="btn btn-primary">
+                Read Full Article <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. LATEST ARTICLES GRID ==================== -->
+    <section class="section" id="latest-articles" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-newspaper"></i> Fresh Dispatches</span>
+          <h2 class="section-title">Latest <span class="text-gold">Articles</span> & Guides</h2>
+          <p class="section-subtitle">Browse strategy articles, hobby preservation tips, and beginner tutorials.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <!-- Filter Categories -->
+        <div class="tabs-nav" style="margin-bottom: 2.5rem;">
+          <button class="tab-btn blog-cat-btn active" data-cat="all">All Articles</button>
+          <button class="tab-btn blog-cat-btn" data-cat="Reviews">Game Reviews</button>
+          <button class="tab-btn blog-cat-btn" data-cat="Strategy">Strategy Tips</button>
+          <button class="tab-btn blog-cat-btn" data-cat="Hobby">Hobby Guides</button>
+          <button class="tab-btn blog-cat-btn" data-cat="Beginner">Beginner Guides</button>
+        </div>
+
+        <div class="articles-grid" id="blog-articles-grid">
+          <!-- Rendered dynamically by js/pages.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. COMMUNITY GAME NIGHTS & EVENTS ==================== -->
+    <section class="section" id="blog-game-nights">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-calendar-star"></i> In-Store Gathering</span>
+          <h2 class="section-title">Community <span class="text-gold">Game Nights</span> & Events</h2>
+          <p class="section-subtitle">Join upcoming in-store tournaments, beginner D&D one-shots, and miniature painting clinics.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="events-grid" id="blog-events-grid">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. GAMING TIPS / MASTERCLASS & NEWSLETTER ==================== -->
+    <section class="section" id="hobby-masterclass-tips" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-lightbulb"></i> Quick Pro-Tips</span>
+          <h2 class="section-title">Tabletop <span class="text-gold">Masterclass</span> Bites</h2>
+          <p class="section-subtitle">Quick advice from our tournament judges and miniature artists.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; margin-bottom: 3.5rem;" class="events-grid">
+          <div style="background: var(--bg-card); padding: 1.75rem; border-radius: var(--radius-xl); border: 1px solid var(--glass-border);">
+            <div style="color: var(--accent-gold); font-size: 1.8rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-shield"></i></div>
+            <h4 style="font-size: 1.2rem; margin-bottom: 0.4rem;">Sleeving Thick Micron Rule</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
+              Use 100-micron matte sleeves for deckbuilders with heavy shuffling, and 60-micron standard sleeves for auxiliary market decks to save shelf space.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-card); padding: 1.75rem; border-radius: var(--radius-xl); border: 1px solid var(--glass-border);">
+            <div style="color: var(--accent-orange); font-size: 1.8rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-paintbrush"></i></div>
+            <h4 style="font-size: 1.2rem; margin-bottom: 0.4rem;">The 2 Thin Coats Mantra</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
+              Never apply paint straight from the pot to miniature plastic. Thin with water on a wet palette to preserve crisp sculpted armor details.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-card); padding: 1.75rem; border-radius: var(--radius-xl); border: 1px solid var(--glass-border);">
+            <div style="color: var(--accent-purple); font-size: 1.8rem; margin-bottom: 0.75rem;"><i class="fa-solid fa-dice-d20"></i></div>
+            <h4 style="font-size: 1.2rem; margin-bottom: 0.4rem;">How to Teach Heavy Games</h4>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">
+              Always start with the winning condition (How to score points), explain the thematic role of players, and run 1 dummy round before diving into edge cases.
+            </p>
+          </div>
+        </div>
+
+        <!-- Newsletter box -->
+        <div class="newsletter-box">
+          <div class="newsletter-content">
+            <span class="section-tag"><i class="fa-solid fa-envelope"></i> Never Miss An Article</span>
+            <h3 style="font-size: 2rem; margin-bottom: 0.5rem;">GET WEEKLY TABLETOP STRATEGIES</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+              Subscribe to the Dice & Chronicle digest. No spam, just pure strategy, lore, and miniature craft tutorials.
+            </p>
+            <form class="newsletter-form">
+              <input type="email" class="newsletter-input" placeholder="Your email address..." required>
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-paper-plane"></i> Subscribe Digest
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. FINAL CTA & FOOTER ==================== -->
+    <section class="section-sm" id="blog-final-cta" style="background: var(--bg-main); border-top: 1px solid var(--glass-border);">
+      <div class="container">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+          <div>
+            <span class="section-tag"><i class="fa-solid fa-cart-shopping"></i> Put Strategy Into Action</span>
+            <h3 style="font-size: 1.8rem; margin-top: 0.4rem;">INSPIRED BY A GAME REVIEW?</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+              Grab the featured games directly from our vault with same-day Seattle dispatch.
+            </p>
+          </div>
+          <a href="products.html" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-dungeon"></i> Shop The Featured Games
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Complete Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+            <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+            <span class="brand-text">HOBB<span>IX</span></span>
+          </a>
+          <p>
+            Your ultimate destination for curated board games, tabletop RPGs, custom polyhedral dice, and unforgettable community game nights.
+          </p>
+          <div class="footer-social-links">
+            <a href="#" class="footer-social-btn" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Explore Store</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="home-2.html">Home 2 (Alt Showcase)</a></li>
+            <li><a href="about.html">About Our Lounge</a></li>
+            <li><a href="products.html">Product Catalog</a></li>
+            <li><a href="recommendations.html">Game Matchmaker</a></li>
+            <li><a href="blog.html">Tabletop Chronicle</a></li>
+            <li><a href="contact.html">Contact & Hours</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Game Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="products.html">Heavy Strategy Games</a></li>
+            <li><a href="products.html">Living Card Games</a></li>
+            <li><a href="products.html">Family & Party Games</a></li>
+            <li><a href="products.html">D&D and RPG Tomes</a></li>
+            <li><a href="products.html">Custom Dice & Sleeves</a></li>
+            <li><a href="products.html">2-Player Duels</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Vault Lounge</h4>
+          <ul class="footer-contact-info">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>404 Dragon Run Boulevard, Suite 12, Seattle, WA 98101</span>
+            </li>
+            <li>
+              <i class="fa-regular fa-clock"></i>
+              <span>Mon-Sun: 11:00 AM – 11:00 PM<br>(Game Nights till Midnight)</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+1 (800) 555-MYTHIC</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>gamemaster@hobbix.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Hobbix Tabletop Gaming Co. All rights reserved.</p>
+        <div class="footer-payment-badges">
+          <i class="fa-brands fa-cc-visa" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" title="MasterCard"></i>
+          <i class="fa-brands fa-cc-amex" title="American Express"></i>
+          <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+          <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Global Drawers & Modals -->
+  <div class="side-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3><i class="fa-solid fa-cart-shopping text-gold"></i> Your Vault Cart (<span class="cart-count">0</span>)</h3>
+      <button class="drawer-close-btn" onclick="closeCartDrawer()" aria-label="Close Cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-free-shipping">
+      <div id="free-shipping-status">Add <strong>$75.00</strong> more for Free Delivery</div>
+      <div class="shipping-progress-bar"><div class="shipping-progress-fill" id="shipping-progress-fill"></div></div>
+    </div>
+    <div class="cart-body" id="cart-items-list"></div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span><span id="cart-subtotal-amount" class="font-mono">$0.00</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>Estimated Shipping</span><span style="color: var(--accent-emerald);">Calculated at Checkout</span>
+      </div>
+      <div class="cart-summary-row total">
+        <span>Total</span><span id="cart-total-amount">$0.00</span>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-primary" onclick="handlePlaceOrder()"><i class="fa-solid fa-bag-shopping"></i> Place Order</button>
+        <button class="btn btn-secondary btn-sm" onclick="closeCartDrawer()">Continue Browsing</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="search-modal">
+    <div class="modal-content search-modal-box">
+      <button class="modal-close-btn" onclick="closeSearchModal()" aria-label="Close Search"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body">
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" class="search-input" id="global-search-input" placeholder="Search 1,500+ board games, expansions, dice, RPGs...">
+        </div>
+        <div class="search-results-list" id="search-results-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="quickview-modal">
+    <div class="modal-content" style="max-width: 780px;">
+      <button class="modal-close-btn" onclick="closeQuickView()" aria-label="Close Quick View"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body" id="quickview-modal-body"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="event-modal">
+    <div class="modal-content" style="max-width: 580px;">
+      <button class="modal-close-btn" onclick="closeJoinEventModal()" aria-label="Close Event Modal"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body" id="event-modal-body"></div>
+    </div>
+  </div>
+
+  <div class="mobile-drawer-overlay" id="modal-overlay-backdrop" onclick="closeCartDrawer()"></div>
+  <div class="toast-container" id="toast-container"></div>
+  <button class="back-to-top" id="back-to-top-btn" aria-label="Scroll to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hobbix | About Our Tabletop Lounge & Story</title>
+  <meta name="description" content="Learn about Hobbix - our story, gaming philosophy, dedicated tabletop lounge, community game nights, and passion for face-to-face board gaming.">
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <!-- Font Awesome 6.5.1 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==================== GLOBAL HEADER ==================== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+        <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+        <span class="brand-text">HOBB<span>IX</span></span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="home-2.html" class="nav-link">Home 2</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="products.html" class="nav-link">Products</a>
+        <a href="recommendations.html" class="nav-link">Recommendations</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Theme Toggle -->
+        <button class="header-action-btn theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <!-- RTL Toggle -->
+        <button class="header-action-btn rtl-toggle-btn" id="rtl-toggle-btn" onclick="toggleRTL()" title="Toggle RTL/LTR Direction" aria-label="Toggle RTL">
+          <i class="fa-solid fa-language"></i>
+        </button>
+        <button class="header-action-btn cart-btn-desktop" onclick="openCartDrawer()" title="Shopping Cart" aria-label="Shopping Cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count">0</span>
+        </button>
+        <a href="products.html" class="btn btn-primary btn-sm header-cta-btn">
+          <i class="fa-solid fa-dice-d20"></i> Explore Vault
+        </a>
+        <button class="hamburger-btn" id="mobile-hamburger-btn" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+        <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+        <span class="brand-text">HOBB<span>IX</span></span>
+      </a>
+      <button class="drawer-close-btn" id="mobile-drawer-close" onclick="window.closeMobileMenu()" aria-label="Close Navigation Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">Home <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="home-2.html" class="mobile-nav-link">Home 2 <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="about.html" class="mobile-nav-link active">About <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="products.html" class="mobile-nav-link">Products <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="recommendations.html" class="mobile-nav-link">Recommendations <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="blog.html" class="mobile-nav-link">Blog <i class="fa-solid fa-chevron-right"></i></a>
+      <a href="contact.html" class="mobile-nav-link">Contact <i class="fa-solid fa-chevron-right"></i></a>
+    </nav>
+    <div class="mobile-drawer-footer" style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08);">
+      <button class="btn btn-secondary btn-block" onclick="window.closeMobileMenu(); openCartDrawer();" style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; border-radius: var(--radius-md);">
+        <span style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;"><i class="fa-solid fa-cart-shopping text-gold"></i> View Vault Cart</span>
+        <span class="badge badge-gold"><span class="cart-count">0</span> Items</span>
+      </button>
+      <a href="products.html" class="btn btn-primary btn-block" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; font-weight: 700; border-radius: var(--radius-md);">
+        <i class="fa-solid fa-dice-d20"></i> Explore Vault
+      </a>
+      <div style="display: flex; gap: 0.65rem; margin-top: 0.25rem;">
+        <button class="btn btn-secondary btn-sm" onclick="toggleTheme()" style="flex: 1; padding: 0.5rem 0.65rem; font-size: 0.82rem;">
+          <i class="fa-solid fa-circle-half-stroke"></i> Theme
+        </button>
+        <button class="btn btn-secondary btn-sm" onclick="toggleRTL()" style="flex: 1; padding: 0.5rem 0.65rem; font-size: 0.82rem;">
+          <i class="fa-solid fa-language"></i> RTL / LTR
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-drawer-overlay" id="mobile-drawer-overlay"></div>
+
+  <main>
+    <!-- ==================== 1. ABOUT VISUAL BRAND HERO ==================== -->
+    <section class="section about-hero-section" id="about-hero">
+      <div class="container">
+        <div class="about-hero-grid">
+          <div>
+            <span class="section-tag" style="margin-bottom: 0.85rem;"><i class="fa-solid fa-shield-heart"></i> Crafted by Gamers, For Gamers</span>
+            <h1 class="section-title" style="font-size: clamp(2.1rem, 4.2vw, 3.4rem); line-height: 1.15; margin-bottom: 1rem;">
+              CRAFTING UNFORGETTABLE <span class="gradient-text">GAME NIGHTS</span> SINCE 2018
+            </h1>
+            <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.75rem; max-width: 600px;">
+              We are more than just an online board game shop — we are an impassioned guild of dungeon masters, euro-gamers, miniature artists, and tabletop tacticians dedicated to delivering mint-condition masterpieces to game rooms worldwide.
+            </p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="products.html" class="btn btn-primary">
+                <i class="fa-solid fa-dice-d20"></i> Explore Vault Catalog
+              </a>
+              <a href="#our-story" class="btn btn-secondary">
+                <i class="fa-solid fa-scroll"></i> Read Our Origin Tale
+              </a>
+            </div>
+          </div>
+
+          <div class="about-hero-showcase">
+            <div class="about-hero-card-frame">
+              <img src="asstes/Dune Imperium – Uprising.jpg" alt="Tabletop Gaming at Hobbix" class="about-hero-img">
+            </div>
+            <div class="about-hero-floating-badge">
+              <div class="badge-icon"><i class="fa-solid fa-crown"></i></div>
+              <div>
+                <strong>EST. 2018</strong>
+                <span>Seattle Flagship Lounge</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Supporting Stats Strip -->
+        <div class="stats-counter-strip">
+          <div class="stat-box">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Games Safely Delivered</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">1,200+</div>
+            <div class="stat-label">In-Store Demo Nights</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">1,500+</div>
+            <div class="stat-label">Curated Tabletop Titles</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">99.8%</div>
+            <div class="stat-label">Happy Gamers Guarantee</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. OUR STORY ==================== -->
+    <section class="section" id="our-story" style="background: var(--bg-surface);">
+      <div class="container story-grid">
+        <div class="story-content">
+          <span class="section-tag"><i class="fa-solid fa-scroll"></i> The Origin Tale</span>
+          <h2 style="font-size: 2.4rem; margin: 0.5rem 0 1rem;">FROM A BASEMENT D&D CAMPAIGN TO A <span class="text-gold">TABLETOP HAVEN</span></h2>
+          <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+            In the winter of 2018, four lifelong friends realized that modern life was missing something vital: genuine, face-to-face connection across a wooden table over dice and strategy.
+          </p>
+          <p style="font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
+            What began as an underground library of hand-sleeved board games in Seattle has evolved into Hobbix: a premier 4,500 sq. ft. community gaming lounge, coffee tavern, and worldwide distributor of the finest board games and hobby gear on Earth.
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="products.html" class="btn btn-primary">
+              <i class="fa-solid fa-dice-d20"></i> Explore Our Vault
+            </a>
+            <a href="contact.html" class="btn btn-secondary">
+              <i class="fa-solid fa-map-location-dot"></i> Visit Our Lounge
+            </a>
+          </div>
+        </div>
+
+        <div class="story-media-stack">
+          <img src="asstes/Wingspan Master Collector's Edition.jpg" alt="Hobbix Tabletop Community" class="story-img-main">
+          <div class="story-experience-card">
+            <div style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; color: var(--accent-gold); line-height: 1;">
+              6+ YEARS
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">
+              Of building warm, welcoming tabletop memories.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. WHY CHOOSE US (4 CORE PILLARS) ==================== -->
+    <section class="section" id="why-choose-us">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-award"></i> The Vault Standard</span>
+          <h2 class="section-title">Why Gamers <span class="text-gold">Trust Us</span></h2>
+          <p class="section-subtitle">We treat your games with the reverence they deserve, from hand-curation to packaging perfection.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="pillars-grid">
+          <!-- Pillar 1 -->
+          <div class="pillar-card">
+            <div class="pillar-icon-box gold-glow">
+              <i class="fa-solid fa-boxes-packing"></i>
+            </div>
+            <span class="pillar-category-tag">MINT DELIVERY</span>
+            <h3 class="pillar-title">Corner-Shield Shipping</h3>
+            <p class="pillar-desc">
+              Every game box is nestled in high-density bubble wrap with reinforced 360° corner guards. Guaranteed zero dented collector boxes.
+            </p>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="pillar-card">
+            <div class="pillar-icon-box orange-glow">
+              <i class="fa-solid fa-certificate"></i>
+            </div>
+            <span class="pillar-category-tag">PUBLISHER DIRECT</span>
+            <h3 class="pillar-title">100% Genuine Printings</h3>
+            <p class="pillar-desc">
+              Direct partnerships with Stonemaier, Leder Games, Cephalofair, and Wizards of the Coast. Guaranteed authentic verified editions.
+            </p>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="pillar-card">
+            <div class="pillar-icon-box purple-glow">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <span class="pillar-category-tag">EXPERT GUIDANCE</span>
+            <h3 class="pillar-title">Game Master Concierge</h3>
+            <p class="pillar-desc">
+              Unsure which game fits your group? Our certified staff will match you with the exact right mechanic in minutes.
+            </p>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="pillar-card">
+            <div class="pillar-icon-box cyan-glow">
+              <i class="fa-solid fa-puzzle-piece"></i>
+            </div>
+            <span class="pillar-category-tag">LIFETIME VAULT</span>
+            <h3 class="pillar-title">Free Missing Piece Vault</h3>
+            <p class="pillar-desc">
+              Lost a meeple or wooden cube? We maintain a massive replacement parts vault and ship missing tokens free to members.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. OUR GAMING PHILOSOPHY ==================== -->
+    <section class="section" id="gaming-philosophy" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-heart-pulse"></i> Our Core Values</span>
+          <h2 class="section-title">Our Tabletop <span class="text-gold">Philosophy</span></h2>
+          <p class="section-subtitle">Four guiding principles that shape how we curate our collection and host our community.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="philosophy-grid">
+          <!-- Value 1 -->
+          <div class="philosophy-card">
+            <div class="philosophy-card-header">
+              <div class="philosophy-icon-wrap gold"><i class="fa-solid fa-people-arrows"></i></div>
+              <span class="philosophy-num">01</span>
+            </div>
+            <h3 class="philosophy-title">Unplugged Face-to-Face Joy</h3>
+            <p class="philosophy-desc">
+              In an era dominated by screens and algorithmic feeds, board games provide tactile, deeply human moments of shared laughter, triumphant tactical maneuvers, and unforgettable table memories.
+            </p>
+          </div>
+
+          <!-- Value 2 -->
+          <div class="philosophy-card">
+            <div class="philosophy-card-header">
+              <div class="philosophy-icon-wrap orange"><i class="fa-solid fa-door-open"></i></div>
+              <span class="philosophy-num">02</span>
+            </div>
+            <h3 class="philosophy-title">Zero Gatekeeping, All Welcome</h3>
+            <p class="philosophy-desc">
+              Whether you've never rolled a 20-sided die or you own 400 heavy Euro games, there is always an open chair, warm coffee, and an enthusiastic teacher ready at Hobbix.
+            </p>
+          </div>
+
+          <!-- Value 3 -->
+          <div class="philosophy-card">
+            <div class="philosophy-card-header">
+              <div class="philosophy-icon-wrap purple"><i class="fa-solid fa-leaf"></i></div>
+              <span class="philosophy-num">03</span>
+            </div>
+            <h3 class="philosophy-title">Eco-Conscious Tabletop</h3>
+            <p class="philosophy-desc">
+              We champion publishers who use FSC-certified card stock, plant-based inks, and plastic-free interior packaging to protect our planet for future generations of gamers.
+            </p>
+          </div>
+
+          <!-- Value 4 -->
+          <div class="philosophy-card">
+            <div class="philosophy-card-header">
+              <div class="philosophy-icon-wrap cyan"><i class="fa-solid fa-palette"></i></div>
+              <span class="philosophy-num">04</span>
+            </div>
+            <h3 class="philosophy-title">Artistic Craftsmanship</h3>
+            <p class="philosophy-desc">
+              From hand-cast resin dice to linen-finish cards and sculpted miniatures, we celebrate tabletop gaming as a profound visual and tactile artistic medium.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. COMMUNITY & IN-STORE EXPERIENCE GALLERY ==================== -->
+    <section class="section" id="in-store-experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-camera"></i> Our Tabletop Lounge</span>
+          <h2 class="section-title">The In-Store <span class="text-gold">Experience</span></h2>
+          <p class="section-subtitle">Step inside our Seattle gaming flagship featuring custom oak tables, coffee bar, and 1,000-game lending library.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="experience-gallery-grid">
+          <!-- Gallery Item 1 -->
+          <div class="gallery-item">
+            <img src="asstes/Dune Imperium – Uprising.jpg" alt="Main Gaming Lounge">
+            <div class="gallery-caption">
+              <div>Custom Gaming Tables</div>
+              <span class="gallery-subcaption">16 Recessed Oak Tables</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 2 -->
+          <div class="gallery-item">
+            <img src="asstes/Dungeons & Dragons 2024 Player's Handbook.jpg" alt="Private D&D Tavern Room">
+            <div class="gallery-caption">
+              <div>Private D&D Tavern Room</div>
+              <span class="gallery-subcaption">Acoustic Sound-Treated</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 3 -->
+          <div class="gallery-item">
+            <img src="asstes/Mythic Prismatic Metal Polyhedral Dice Set.jpg" alt="Miniature Painting Workshop">
+            <div class="gallery-caption">
+              <div>Miniature & Dice Studio</div>
+              <span class="gallery-subcaption">Precision Paint Stations</span>
+            </div>
+          </div>
+
+          <!-- Gallery Item 4 -->
+          <div class="gallery-item">
+            <img src="asstes/Arkham Horror The Living Card Game.jpg" alt="1000+ Title Lending Vault">
+            <div class="gallery-caption">
+              <div>Free Lending Vault</div>
+              <span class="gallery-subcaption">1,200+ Demo Titles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ==================== 6. MEET THE VAULT CURATORS & GAME MASTERS ==================== -->
+    <section class="section" id="vault-team" style="background: var(--bg-surface);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag"><i class="fa-solid fa-users-gear"></i> The Human Element</span>
+          <h2 class="section-title">Meet Our <span class="text-gold">Game Masters</span></h2>
+          <p class="section-subtitle">The passionate strategists, tournament champions, and lore masters who test and curate every single game in our vault.</p>
+          <div class="title-divider"></div>
+        </div>
+
+        <div class="team-grid">
+          <!-- Curator 1 -->
+          <div class="team-card">
+            <div class="team-img-wrap">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Elena Rostova" class="team-img">
+              <span class="team-role-badge"><i class="fa-solid fa-dice-d20"></i> Head Dungeon Master</span>
+            </div>
+            <div class="team-card-body">
+              <h3 class="team-name">Elena Rostova</h3>
+              <span class="team-specialty">Campaign Crawlers & RPG Lore</span>
+              <p class="team-bio">Running D&D campaigns for 12+ years. Elena designs our custom tavern encounters and tests every dungeon crawl legacy box.</p>
+              <div class="team-favorite">
+                <span>Top Pick:</span> <strong>Frosthaven & Arkham Horror</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Curator 2 -->
+          <div class="team-card">
+            <div class="team-img-wrap">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Marcus Vance" class="team-img">
+              <span class="team-role-badge"><i class="fa-solid fa-chess-rook"></i> Heavy Euro Strategist</span>
+            </div>
+            <div class="team-card-body">
+              <h3 class="team-name">Marcus Vance</h3>
+              <span class="team-specialty">Economic Engines & Worker Placement</span>
+              <p class="team-bio">Co-founder and math mastermind. If a game has zero-luck supply chain mechanics and interlocking gears, Marcus has analyzed it.</p>
+              <div class="team-favorite">
+                <span>Top Pick:</span> <strong>Brass: Birmingham Deluxe</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Curator 3 -->
+          <div class="team-card">
+            <div class="team-img-wrap">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Dr. Maya Lin" class="team-img">
+              <span class="team-role-badge"><i class="fa-solid fa-people-roof"></i> Family & Gateway Lead</span>
+            </div>
+            <div class="team-card-body">
+              <h3 class="team-name">Dr. Maya Lin</h3>
+              <span class="team-specialty">Accessible Strategy & Cozy Engines</span>
+              <p class="team-bio">Cognitive psychologist and board game educator. Maya specializes in finding games that bridge 8-year-olds and grandparents seamlessly.</p>
+              <div class="team-favorite">
+                <span>Top Pick:</span> <strong>Wingspan & Cascadia</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Curator 4 -->
+          <div class="team-card">
+            <div class="team-img-wrap">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Darius Cole" class="team-img">
+              <span class="team-role-badge"><i class="fa-solid fa-trophy"></i> Tournament Director</span>
+            </div>
+            <div class="team-card-body">
+              <h3 class="team-name">Darius Cole</h3>
+              <span class="team-specialty">Competitive Living Cards & Duels</span>
+              <p class="team-bio">Regional Magic: The Gathering and Dune: Imperium finalist. Darius oversees Friday Commander Nights and regional leaderboard leagues.</p>
+              <div class="team-favorite">
+                <span>Top Pick:</span> <strong>Dune: Imperium – Uprising</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Join the Guild CTA Ribbon inside Section 6 -->
+        <div class="pre-footer-cta-card">
+          <span class="badge badge-gold" style="margin-bottom: 0.75rem;"><i class="fa-solid fa-compass"></i> Begin Your Quest</span>
+          <h2 class="pre-footer-cta-title">READY FOR YOUR <span class="gradient-text">NEXT GAME NIGHT?</span></h2>
+          <p class="pre-footer-cta-desc">
+            Browse our handpicked inventory or reserve a table in our Seattle gaming lounge for this Friday night!
+          </p>
+          <div class="pre-footer-cta-actions">
+            <a href="products.html" class="btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> Shop Board Games</a>
+            <a href="contact.html" class="btn btn-secondary"><i class="fa-solid fa-calendar"></i> Book a Game Table</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Complete Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" aria-label="Hobbix Home">
+            <div class="brand-icon"><i class="fa-solid fa-dice-d20"></i></div>
+            <span class="brand-text">HOBB<span>IX</span></span>
+          </a>
+          <p>
+            Your ultimate destination for curated board games, tabletop RPGs, custom polyhedral dice, and unforgettable community game nights.
+          </p>
+          <div class="footer-social-links">
+            <a href="#" class="footer-social-btn" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="footer-social-btn" aria-label="Twitch"><i class="fa-brands fa-twitch"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Explore Store</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="home-2.html">Home 2 (Alt Showcase)</a></li>
+            <li><a href="about.html">About Our Lounge</a></li>
+            <li><a href="products.html">Product Catalog</a></li>
+            <li><a href="recommendations.html">Game Matchmaker</a></li>
+            <li><a href="blog.html">Tabletop Chronicle</a></li>
+            <li><a href="contact.html">Contact & Hours</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Game Categories</h4>
+          <ul class="footer-links-list">
+            <li><a href="products.html">Heavy Strategy Games</a></li>
+            <li><a href="products.html">Living Card Games</a></li>
+            <li><a href="products.html">Family & Party Games</a></li>
+            <li><a href="products.html">D&D and RPG Tomes</a></li>
+            <li><a href="products.html">Custom Dice & Sleeves</a></li>
+            <li><a href="products.html">2-Player Duels</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Vault Lounge</h4>
+          <ul class="footer-contact-info">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>404 Dragon Run Boulevard, Suite 12, Seattle, WA 98101</span>
+            </li>
+            <li>
+              <i class="fa-regular fa-clock"></i>
+              <span>Mon-Sun: 11:00 AM – 11:00 PM<br>(Game Nights till Midnight)</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+1 (800) 555-MYTHIC</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>gamemaster@hobbix.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Hobbix Tabletop Gaming Co. All rights reserved.</p>
+        <div class="footer-payment-badges">
+          <i class="fa-brands fa-cc-visa" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard" title="MasterCard"></i>
+          <i class="fa-brands fa-cc-amex" title="American Express"></i>
+          <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+          <i class="fa-brands fa-cc-apple-pay" title="Apple Pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Global Drawers & Modals -->
+  <div class="side-drawer" id="cart-drawer">
+    <div class="drawer-header">
+      <h3><i class="fa-solid fa-cart-shopping text-gold"></i> Your Vault Cart (<span class="cart-count">0</span>)</h3>
+      <button class="drawer-close-btn" onclick="closeCartDrawer()" aria-label="Close Cart"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-free-shipping">
+      <div id="free-shipping-status">Add <strong>$75.00</strong> more for Free Delivery</div>
+      <div class="shipping-progress-bar"><div class="shipping-progress-fill" id="shipping-progress-fill"></div></div>
+    </div>
+    <div class="cart-body" id="cart-items-list"></div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span><span id="cart-subtotal-amount" class="font-mono">$0.00</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>Estimated Shipping</span><span style="color: var(--accent-emerald);">Calculated at Checkout</span>
+      </div>
+      <div class="cart-summary-row total">
+        <span>Total</span><span id="cart-total-amount">$0.00</span>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-primary" onclick="handlePlaceOrder()"><i class="fa-solid fa-bag-shopping"></i> Place Order</button>
+        <button class="btn btn-secondary btn-sm" onclick="closeCartDrawer()">Continue Browsing</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="search-modal">
+    <div class="modal-content search-modal-box">
+      <button class="modal-close-btn" onclick="closeSearchModal()" aria-label="Close Search"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body">
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" class="search-input" id="global-search-input" placeholder="Search 1,500+ board games, expansions, dice, RPGs...">
+        </div>
+        <div class="search-results-list" id="search-results-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="quickview-modal">
+    <div class="modal-content" style="max-width: 780px;">
+      <button class="modal-close-btn" onclick="closeQuickView()" aria-label="Close Quick View"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-body" id="quickview-modal-body"></div>
+    </div>
+  </div>
+
+  <div class="mobile-drawer-overlay" id="modal-overlay-backdrop" onclick="closeCartDrawer()"></div>
+  <div class="toast-container" id="toast-container"></div>
+  <button class="back-to-top" id="back-to-top-btn" aria-label="Scroll to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/pages.js"></script>
+</body>
+</html>
