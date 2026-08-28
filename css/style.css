@@ -7892,24 +7892,93 @@ h5 { font-size: 0.9rem; font-weight: 600; }
     display: none;
   }
 
-  /* 3D Testimonials Deck Carousel */
+  /* 3D Testimonials Deck Carousel Mobile Fix */
+  .ref-deck-wrapper {
+    position: relative;
+    padding-bottom: 3.25rem;
+    margin-bottom: 1.5rem;
+  }
+
   .ref-deck-stage {
-    height: 420px;
+    height: 380px;
     perspective: 800px;
   }
 
   .ref-deck-card {
-    width: 94%;
+    width: 96%;
     max-width: 340px;
-    min-height: 340px;
-    padding: 1.75rem 1.25rem;
+    min-height: 330px;
+    padding: 1.5rem 1.25rem;
     border-radius: var(--radius-xl);
+    box-sizing: border-box;
   }
 
   .ref-deck-card.is-prev,
   .ref-deck-card.is-next {
     opacity: 0 !important;
     pointer-events: none !important;
+  }
+
+  .ref-deck-card.is-active {
+    transform: translateX(0) scale(1) translateZ(0) !important;
+  }
+
+  .ref-card-quote-icon {
+    font-size: 2rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .ref-card-text {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 1rem !important;
+    text-align: left !important;
+    color: #334155 !important;
+  }
+
+  .ref-card-divider {
+    margin: 0.75rem 0 0.5rem !important;
+  }
+
+  .ref-card-author-name {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+  }
+
+  .ref-card-author-meta {
+    font-size: 0.78rem !important;
+    color: #64748b !important;
+  }
+
+  /* Reposition Nav Buttons to Bottom Controls Bar (Prevents text overlapping) */
+  .ref-deck-nav-btn {
+    top: auto !important;
+    bottom: 0 !important;
+    transform: none !important;
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 0.95rem !important;
+    z-index: 25 !important;
+  }
+
+  .ref-deck-nav-btn.prev-btn {
+    left: calc(50% - 95px) !important;
+    right: auto !important;
+  }
+
+  .ref-deck-nav-btn.next-btn {
+    right: calc(50% - 95px) !important;
+    left: auto !important;
+  }
+
+  .ref-deck-dots {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    z-index: 20;
   }
 
   .ref-bottom-bar {
