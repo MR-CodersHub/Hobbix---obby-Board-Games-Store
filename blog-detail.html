@@ -102,13 +102,18 @@
     <section class="section-sm page-hero-banner" id="blog-detail-hero">
       <div class="container">
         <!-- Breadcrumb Navigation -->
-        <div class="breadcrumb-trail" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-          <a href="index.html" class="breadcrumb-link"><i class="fa-solid fa-house"></i> Home</a>
-          <span>/</span>
-          <a href="blog.html" class="breadcrumb-link">The Tabletop Chronicle</a>
-          <span>/</span>
-          <span class="breadcrumb-current text-gold">Heavyweight Masterpieces</span>
-        </div>
+        <nav class="breadcrumb-wrapper" aria-label="Breadcrumb">
+          <div class="breadcrumb-trail">
+            <a href="index.html" class="breadcrumb-link"><i class="fa-solid fa-house"></i> <span>Home</span></a>
+            <span class="breadcrumb-sep"><i class="fa-solid fa-chevron-right"></i></span>
+            <a href="blog.html" class="breadcrumb-link">
+              <span class="breadcrumb-text-full">The Tabletop Chronicle</span>
+              <span class="breadcrumb-text-short">Blog</span>
+            </a>
+            <span class="breadcrumb-sep"><i class="fa-solid fa-chevron-right"></i></span>
+            <span class="breadcrumb-current text-gold">Heavyweight Masterpieces</span>
+          </div>
+        </nav>
 
         <div class="section-header" style="max-width: 860px; margin: 0 auto;">
           <div style="display: flex; justify-content: center; gap: 0.75rem; align-items: center; margin-bottom: 0.85rem; flex-wrap: wrap;">

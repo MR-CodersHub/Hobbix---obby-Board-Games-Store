@@ -674,7 +674,7 @@
       align-items: center;
       gap: 0.85rem;
       background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: var(--radius-md);
       padding: 0.7rem 0.95rem;
       cursor: pointer;
@@ -684,13 +684,14 @@
 
     .hof-roster-card:hover {
       background: rgba(36, 25, 77, 0.95);
-      border-color: rgba(245, 158, 11, 0.4);
+      border-color: rgba(245, 158, 11, 0.6);
       transform: translateX(6px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
-    .hof-roster-card.rank-silver { border-left: 3px solid #c0c0c0; }
-    .hof-roster-card.rank-bronze { border-left: 3px solid #cd7f32; }
+    .hof-roster-card.rank-silver { border-left: 3.5px solid #c0c0c0; }
+    .hof-roster-card.rank-bronze { border-left: 3.5px solid #cd7f32; }
+    .hof-roster-card.rank-default { border-left: 3.5px solid rgba(255, 255, 255, 0.2); }
 
     .hof-roster-rank {
       display: flex;
@@ -1844,7 +1845,30 @@
 
     [data-theme="light"] .hof-roster-card {
       background: #ffffff;
-      border-color: rgba(15, 23, 42, 0.08);
+      border: 1.5px solid #cbd5e1;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+
+    [data-theme="light"] .hof-roster-card.rank-silver {
+      border-left: 4px solid #94a3b8;
+    }
+
+    [data-theme="light"] .hof-roster-card.rank-bronze {
+      border-left: 4px solid #d97706;
+    }
+
+    [data-theme="light"] .hof-roster-card.rank-default {
+      border-left: 4px solid #cbd5e1;
+    }
+
+    [data-theme="light"] .hof-roster-card:hover {
+      background: #f8fafc;
+      border-color: rgba(245, 158, 11, 0.6);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    [data-theme="light"] .hof-roster-action-box {
+      border-top-color: #e2e8f0;
     }
 
     [data-theme="light"] .hof-roster-title-row h4 {
@@ -1857,8 +1881,9 @@
     }
 
     [data-theme="light"] .showdown-card {
-      background: #f8fafc;
-      border-color: rgba(15, 23, 42, 0.08);
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
     }
 
     [data-theme="light"] .showdown-card-hero-overlay h4 {
@@ -1871,22 +1896,74 @@
 
     [data-theme="light"] .oracle-console-card {
       background: #ffffff;
-      border-color: rgba(15, 23, 42, 0.08);
+      border: 1.5px solid #cbd5e1;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
     }
 
     [data-theme="light"] .oracle-select {
       background: #f8fafc;
-      border-color: rgba(15, 23, 42, 0.12);
+      border-color: #cbd5e1;
       color: #0f172a;
     }
 
     [data-theme="light"] .staff-gem-row {
       background: #ffffff;
-      border-color: rgba(15, 23, 42, 0.08);
+      border: 1.5px solid #cbd5e1;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.05);
     }
 
     [data-theme="light"] .staff-gem-info h5 {
       color: #0f172a;
+    }
+
+    [data-theme="light"] .staff-pick-overlay .badge-gold,
+    .staff-pick-overlay .badge-gold {
+      background: rgba(245, 158, 11, 0.24) !important;
+      border: 1px solid rgba(245, 158, 11, 0.65) !important;
+      color: #fef08a !important;
+      font-weight: 700 !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    [data-theme="light"] .staff-pick-overlay .badge-gold i,
+    .staff-pick-overlay .badge-gold i {
+      color: #fbbf24 !important;
+    }
+
+    [data-theme="light"] .staff-pick-overlay .card-feature-badge,
+    .staff-pick-overlay .card-feature-badge {
+      background: rgba(255, 255, 255, 0.15) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      color: #ffffff !important;
+      font-weight: 600 !important;
+      backdrop-filter: blur(8px) !important;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    [data-theme="light"] .staff-pick-overlay .card-feature-badge i,
+    .staff-pick-overlay .card-feature-badge i {
+      color: #fbbf24 !important;
+    }
+
+    [data-theme="light"] .staff-pick-overlay .card-special-snippet,
+    .staff-pick-overlay .card-special-snippet {
+      background: rgba(15, 23, 42, 0.75) !important;
+      border: 1px solid rgba(245, 158, 11, 0.4) !important;
+      border-left: 3px solid #f59e0b !important;
+      color: #f8fafc !important;
+      backdrop-filter: blur(8px) !important;
+    }
+
+    [data-theme="light"] .staff-pick-overlay .card-special-snippet span,
+    .staff-pick-overlay .card-special-snippet span {
+      color: #f8fafc !important;
+      font-weight: 500 !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+    }
+
+    [data-theme="light"] .staff-pick-overlay .card-special-snippet i,
+    .staff-pick-overlay .card-special-snippet i {
+      color: #fbbf24 !important;
     }
   </style>
 </head>

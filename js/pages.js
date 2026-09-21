@@ -1003,7 +1003,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Render Hero Header
     const breadcrumbCurrent = document.querySelector('.breadcrumb-current');
-    if (breadcrumbCurrent) breadcrumbCurrent.textContent = article.title.length > 35 ? article.title.substring(0, 32) + '...' : article.title;
+    if (breadcrumbCurrent) {
+      breadcrumbCurrent.textContent = article.title;
+      breadcrumbCurrent.title = article.title;
+    }
 
     const heroSectionHeader = blogDetailHero.querySelector('.section-header');
     if (heroSectionHeader) {
